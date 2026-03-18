@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELA — Luxury Clothing</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: flex-end;
+  padding: 0 56px 88px;
+  position: relative; overflow: hidden;
+  background: #1a120d;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1800&q=80') center 30%/cover no-repeat;
+  opacity: 0.32;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(15,14,13,0.88) 0%, rgba(15,14,13,0.1) 65%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 680px; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 22px;
+  animation: fadeUp 0.8s 0.1s both;
+}
+.hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold-light); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.4rem, 7vw, 6.8rem); font-weight: 400; line-height: 1.04;
+  color: var(--parchment); margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.25s both;
+}
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero-desc {
+  font-size: 1rem; line-height: 1.8; color: rgba(247,243,238,0.58);
+  max-width: 420px; margin-bottom: 44px;
+  animation: fadeUp 0.8s 0.4s both;
+}
+.hero-cta {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.55s both;
+}
+.hero-scroll {
+  position: absolute; right: 56px; bottom: 88px; z-index: 2;
+  writing-mode: vertical-lr; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(247,243,238,0.35); display: flex; align-items: center; gap: 12px;
+}
+.hero-scroll::after { content: ''; width: 1px; height: 48px; background: rgba(247,243,238,0.2); }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── FEATURED STRIP ── */
+.feat-strip {
+  background: var(--linen);
+  padding: 56px;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+}
+.feat-item {
+  position: relative; overflow: hidden; aspect-ratio: 2/3; cursor: pointer;
+}
+.feat-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease; filter: brightness(0.75);
+}
+.feat-item:hover img { transform: scale(1.07); filter: brightness(0.55); }
+.feat-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 28px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+}
+.feat-label span {
+  display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px;
+}
+.feat-label h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem; font-weight: 400; color: #fff;
+}
+.feat-overlay-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.feat-item:hover .feat-overlay-btn { opacity: 1; }
+
+/* ── NEW ARRIVALS ── */
+.new-arrivals { background: var(--parchment); }
+.na-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 32px 24px;
+}
+
+/* ── SPLIT BANNER ── */
+.split-banner {
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 540px;
+}
+.split-left {
+  background: var(--ink); padding: 72px 56px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.split-left .eyebrow { color: var(--gold-light); }
+.split-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem); color: var(--parchment);
+  font-weight: 400; margin-bottom: 16px; line-height: 1.15;
+}
+.split-left p { color: rgba(247,243,238,0.5); line-height: 1.8; margin-bottom: 32px; font-size: 0.9rem; }
+.split-right { position: relative; overflow: hidden; }
+.split-right img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── WHY US ── */
+.why-us { background: var(--white); }
+.why-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 40px;
+}
+.why-item { text-align: center; padding: 32px 16px; }
+.why-icon {
+  font-size: 1.8rem; margin-bottom: 16px; display: block;
+}
+.why-item h4 {
+  font-family: 'Playfair Display', serif; font-size: 1.05rem;
+  font-weight: 400; margin-bottom: 8px;
+}
+.why-item p { font-size: 0.8rem; line-height: 1.75; color: var(--stone); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero { padding: 0 28px 72px; }
+  .hero-scroll { display: none; }
+  .feat-strip { padding: 28px; grid-template-columns: 1fr 1fr; }
+  .feat-strip .feat-item:last-child { display: none; }
+  .na-grid { grid-template-columns: repeat(2,1fr); }
+  .why-grid { grid-template-columns: repeat(2,1fr); }
+  .split-banner { grid-template-columns: 1fr; }
+  .split-right { height: 340px; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 0 20px 60px; }
+  .feat-strip { padding: 20px; grid-template-columns: 1fr; }
+  .feat-strip .feat-item:last-child { display: block; }
+  .na-grid { grid-template-columns: repeat(2,1fr); gap: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page-body">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">New Season — SS 2026</p>
+      <h1>Dressed in<br><em>Quiet Luxury</em></h1>
+      <p class="hero-desc">Timeless pieces crafted with intention. Wardrobe essentials built to last through every season of life.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="shop.html">Explore Collection</a>
+        <a class="btn btn-outline-white" href="about.html">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>Free shipping over ₹3,999</span>
+      <span class="accent">◆</span>
+      <span>New Arrivals — Spring 2026</span>
+      <span class="accent">◆</span>
+      <span>Sustainably Made</span>
+      <span class="accent">◆</span>
+      <span>Easy 30-Day Returns</span>
+      <span class="accent">◆</span>
+      <span>Free shipping over ₹3,999</span>
+      <span class="accent">◆</span>
+      <span>New Arrivals — Spring 2026</span>
+      <span class="accent">◆</span>
+      <span>Sustainably Made</span>
+      <span class="accent">◆</span>
+      <span>Easy 30-Day Returns</span>
+      <span class="accent">◆</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="feat-strip">
+    <div class="feat-item" onclick="location.href='shop.html?cat=women'">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=80" alt="Women">
+      <div class="feat-label"><span>Womenswear</span><h3>Women</h3></div>
+      <button class="btn btn-outline-white feat-overlay-btn">Shop Now</button>
+    </div>
+    <div class="feat-item" onclick="location.href='shop.html?cat=men'">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=700&q=80" alt="Men">
+      <div class="feat-label"><span>Menswear</span><h3>Men</h3></div>
+      <button class="btn btn-outline-white feat-overlay-btn">Shop Now</button>
+    </div>
+    <div class="feat-item" onclick="location.href='shop.html?cat=accessories'">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=80" alt="Accessories">
+      <div class="feat-label"><span>Accessories</span><h3>Extras</h3></div>
+      <button class="btn btn-outline-white feat-overlay-btn">Shop Now</button>
+    </div>
+  </div>
+
+  <!-- NEW ARRIVALS -->
+  <section class="new-arrivals section">
+    <span class="eyebrow">Just Landed</span>
+    <h2 class="section-title">New Arrivals</h2>
+    <div class="na-grid" id="new-grid"></div>
+    <div style="text-align:center;margin-top:52px;">
+      <a class="btn btn-outline" href="shop.html">View All Products</a>
+    </div>
+  </section>
+
+  <!-- SPLIT BANNER -->
+  <div class="split-banner">
+    <div class="split-left">
+      <span class="eyebrow">The Edit</span>
+      <h2>Pieces that work harder, not harder to find.</h2>
+      <p>We curate so you don't have to. Each season we add only what earns a permanent place in your wardrobe.</p>
+      <a class="btn btn-outline-white" href="shop.html?cat=sale">Shop the Sale</a>
+    </div>
+    <div class="split-right">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80" alt="The Edit">
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <section class="why-us section-sm">
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="why-icon">🚚</span>
+        <h4>Free Shipping</h4>
+        <p>Free standard shipping on all orders over ₹3,999 across India.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">↩</span>
+        <h4>Easy Returns</h4>
+        <p>Changed your mind? Return within 30 days, no questions asked.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🌿</span>
+        <h4>Sustainably Made</h4>
+        <p>Every material is traced. We work only with ethical, certified suppliers.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">✦</span>
+        <h4>Genuine Quality</h4>
+        <p>Each piece is inspected before it ships. We stand behind every stitch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2>Join the Inner Circle</h2>
+    <p>New arrivals, private sales, and journal entries — straight to your inbox.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Your email address">
+      <button class="nl-btn" onclick="subscribeNewsletter(this)">Subscribe</button>
+    </div>
+  </div>
+
+</div>
+<script src="main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderFooter();
+    const newProds = PRODUCTS.filter(p => p.new).slice(0,4);
+    document.getElementById('new-grid').innerHTML = newProds.map(p => productCardHTML(p)).join('');
+  });
+</script>
+</body>
+</html>
