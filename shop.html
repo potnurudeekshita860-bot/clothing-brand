@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — VELA</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.shop-hero {
+  background: var(--ink); color: var(--parchment);
+  padding: 56px 56px 48px; margin-top: var(--nav-h);
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.shop-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 400; line-height: 1.1;
+}
+.shop-hero h1 em { color: var(--gold-light); font-style: italic; }
+.product-count { font-size: 0.8rem; color: rgba(247,243,238,0.42); margin-top: 8px; }
+
+.shop-body { padding: 48px 56px 96px; }
+.shop-controls {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; margin-bottom: 40px; flex-wrap: wrap;
+}
+.shop-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 40px 24px;
+}
+.empty-msg {
+  grid-column: 1/-1; text-align: center; padding: 80px 0;
+  color: var(--stone);
+}
+.empty-msg h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.8rem;
+  font-weight: 400; margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) { .shop-grid { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 960px) {
+  .shop-hero { padding: 40px 28px 36px; }
+  .shop-body { padding: 36px 28px 72px; }
+  .shop-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px) {
+  .shop-hero { padding: 32px 20px 28px; }
+  .shop-body { padding: 28px 20px 64px; }
+  .shop-grid { gap: 24px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="page-body">
+
+  <div class="shop-hero">
+    <div>
+      <span class="eyebrow">All Products</span>
+      <h1>The <em>Collection</em></h1>
+      <p class="product-count" id="prod-count">Loading…</p>
+    </div>
+  </div>
+
+  <div class="shop-body">
+    <div class="shop-controls">
+      <div class="filter-wrap" id="filters">
+        <button class="filt active" data-cat="all">All</button>
+        <button class="filt" data-cat="women">Women</button>
+        <button class="filt" data-cat="men">Men</button>
+        <button class="filt" data-cat="accessories">Accessories</button>
+        <button class="filt" data-cat="new">New</button>
+        <button class="filt" data-cat="sale">Sale</button>
+      </div>
+      <select class="sort-sel" id="sortSel">
+        <option value="default">Sort: Featured</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="newest">Newest First</option>
+      </select>
+    </div>
+    <div class="shop-grid" id="shop-grid"></div>
+  </div>
+
+  <div class="newsletter">
+    <h2>Stay in the Loop</h2>
+    <p>Be first to know about new arrivals and exclusive offers.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Your email address">
+      <button class="nl-btn" onclick="subscribeNewsletter(this)">Subscribe</button>
+    </div>
+  </div>
+
+</div>
+<script src="main.js"></script>
+<script>
+let activeCat = 'all';
+let activeSort = 'default';
+
+function getFiltered() {
+  let p = [...PRODUCTS];
+  if (activeCat === 'new') p = p.filter(x => x.new);
+  else if (activeCat === 'sale') p = p.filter(x => x.sale);
+  else if (activeCat !== 'all') p = p.filter(x => x.cat === activeCat);
+  if (activeSort === 'price-asc') p.sort((a,b)=>a.price-b.price);
+  else if (activeSort === 'price-desc') p.sort((a,b)=>b.price-a.price);
+  else if (activeSort === 'newest') p.sort((a,b)=>(b.new?1:0)-(a.new?1:0));
+  return p;
+}
+
+function render() {
+  const prods = getFiltered();
+  const grid = document.getElementById('shop-grid');
+  document.getElementById('prod-count').textContent = `${prods.length} product${prods.length!==1?'s':''}`;
+  if (!prods.length) {
+    grid.innerHTML = `<div class="empty-msg"><h3>No products found</h3><p>Try a different filter.</p></div>`;
+    return;
+  }
+  grid.innerHTML = prods.map(p => productCardHTML(p)).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderFooter();
+
+  // Read URL param for category
+  const params = new URLSearchParams(location.search);
+  const cat = params.get('cat');
+  if (cat) {
+    activeCat = cat;
+    document.querySelectorAll('.filt').forEach(b => {
+      b.classList.toggle('active', b.dataset.cat === cat);
+    });
+  }
+
+  document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('.filt');
+    if (!btn) return;
+    activeCat = btn.dataset.cat;
+    document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+
+  document.getElementById('sortSel').addEventListener('change', e => {
+    activeSort = e.target.value;
+    render();
+  });
+
+  render();
+});
+</script>
+</body>
+</html>
