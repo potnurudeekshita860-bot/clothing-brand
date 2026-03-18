@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — VELA</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.detail-wrap {
+  max-width: 1240px; margin: 0 auto;
+  padding: 40px 56px 96px;
+}
+.breadcrumb {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 36px;
+  display: flex; gap: 8px; align-items: center;
+}
+.breadcrumb a { color: var(--stone); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--terracotta); }
+.breadcrumb span { color: var(--sand); }
+
+.detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
+}
+
+/* Gallery */
+.gallery { position: sticky; top: 88px; }
+.main-shot {
+  aspect-ratio: 3/4; overflow: hidden; background: var(--sand); margin-bottom: 12px;
+}
+.main-shot img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+.thumbs { display: flex; gap: 10px; }
+.thumb {
+  width: 78px; aspect-ratio: 3/4; overflow: hidden; background: var(--sand);
+  cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s;
+}
+.thumb.active { border-color: var(--terracotta); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Info */
+.detail-info { padding-top: 4px; }
+.detail-brand {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+}
+.detail-info h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15;
+  margin-bottom: 16px;
+}
+.detail-price { font-size: 1.25rem; font-weight: 500; margin-bottom: 8px; }
+.detail-price .was { text-decoration: line-through; color: var(--stone); font-weight: 400; margin-right: 10px; }
+.detail-price .now { color: var(--terracotta); }
+.rating-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; color: var(--stone); margin-bottom: 28px;
+}
+.stars { color: var(--gold); letter-spacing: 2px; }
+
+.divider { border: none; border-top: 1px solid var(--sand); margin: 24px 0; }
+
+.detail-desc { font-size: 0.9rem; line-height: 1.85; color: #4a4542; margin-bottom: 28px; }
+
+.label-sm {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--stone); margin-bottom: 12px; display: flex;
+  justify-content: space-between; align-items: center;
+}
+.label-sm a { color: var(--terracotta); font-weight: 400; cursor: pointer; }
+
+.add-btn {
+  width: 100%; padding: 17px; background: var(--ink); color: var(--parchment);
+  border: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; cursor: pointer; transition: all 0.25s;
+  font-family: 'Jost', sans-serif; margin-bottom: 12px;
+}
+.add-btn:hover { background: var(--terracotta); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,97,74,0.25); }
+.wish-btn {
+  width: 100%; padding: 15px; background: transparent; color: var(--ink);
+  border: 1.5px solid var(--sand); font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+  transition: all 0.22s; font-family: 'Jost', sans-serif;
+}
+.wish-btn:hover { border-color: var(--ink); }
+
+.perks { margin-top: 28px; }
+.perk {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.8rem; color: var(--stone); padding: 8px 0;
+  border-bottom: 1px solid var(--sand);
+}
+.perk:last-child { border-bottom: none; }
+.perk-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+/* Related */
+.related-section { background: var(--linen); }
+.related-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px 24px; }
+
+@media (max-width: 960px) {
+  .detail-wrap { padding: 28px 28px 72px; }
+  .detail-grid { grid-template-columns: 1fr; gap: 36px; }
+  .gallery { position: static; }
+  .related-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px) {
+  .detail-wrap { padding: 20px 20px 56px; }
+}
+</style>
+</head>
+<body>
+<div class="page-body">
+
+  <div class="detail-wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="shop.html">Shop</a>
+      <span>/</span>
+      <span id="bc-name">Product</span>
+    </div>
+
+    <div class="detail-grid">
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="main-shot"><img id="mainImg" src="" alt=""></div>
+        <div class="thumbs" id="thumbRow"></div>
+      </div>
+
+      <!-- Info -->
+      <div class="detail-info">
+        <p class="detail-brand">VELA Collection</p>
+        <h1 id="d-name"></h1>
+        <p class="detail-price" id="d-price"></p>
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span>(48 reviews)</span>
+        </div>
+        <hr class="divider">
+        <p class="detail-desc" id="d-desc"></p>
+        <hr class="divider">
+
+        <p class="label-sm">
+          <span>Select Size</span>
+          <a>Size Guide</a>
+        </p>
+        <div class="size-grid" id="d-sizes"></div>
+
+        <p class="label-sm">Quantity</p>
+        <div class="qty-wrap">
+          <button class="qty-btn" id="qMinus">−</button>
+          <input class="qty-val" id="qVal" value="1" readonly>
+          <button class="qty-btn" id="qPlus">+</button>
+        </div>
+
+        <button class="add-btn" onclick="doAddToCart()">Add to Bag</button>
+        <button class="wish-btn">♡ &nbsp; Save to Wishlist</button>
+
+        <div class="perks">
+          <div class="perk"><span class="perk-icon">🚚</span><span>Free shipping on orders over ₹3,999</span></div>
+          <div class="perk"><span class="perk-icon">↩</span><span>Free returns within 30 days</span></div>
+          <div class="perk"><span class="perk-icon">🌿</span><span>Sustainably and ethically sourced materials</span></div>
+          <div class="perk"><span class="perk-icon">🔒</span><span>Secure checkout — Razorpay & UPI accepted</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related -->
+  <section class="related-section section">
+    <span class="eyebrow">You May Also Like</span>
+    <h2 class="section-title">Related Products</h2>
+    <div class="related-grid" id="related-grid"></div>
+  </section>
+
+  <div class="newsletter">
+    <h2>Stay in the Loop</h2>
+    <p>New arrivals, exclusive offers, and styling tips straight to your inbox.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Your email address">
+      <button class="nl-btn" onclick="subscribeNewsletter(this)">Subscribe</button>
+    </div>
+  </div>
+
+</div>
+<script src="main.js"></script>
+<script>
+let product = null;
+let selectedSize = null;
+let qty = 1;
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderFooter();
+  const id = parseInt(new URLSearchParams(location.search).get('id'));
+  product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
+  loadProduct(product);
+});
+
+function loadProduct(p) {
+  document.title = p.name + ' — VELA';
+  document.getElementById('bc-name').textContent = p.name;
+  document.getElementById('d-name').textContent = p.name;
+  document.getElementById('d-desc').textContent = p.desc;
+  document.getElementById('mainImg').src = p.imgs[0];
+  document.getElementById('mainImg').alt = p.name;
+
+  // Price
+  const priceEl = document.getElementById('d-price');
+  priceEl.innerHTML = p.was
+    ? `<span class="was">₹${p.was.toLocaleString()}</span><span class="now">₹${p.price.toLocaleString()}</span>`
+    : `₹${p.price.toLocaleString()}`;
+
+  // Thumbs
+  const thumbRow = document.getElementById('thumbRow');
+  thumbRow.innerHTML = p.imgs.map((img,i) => `
+    <div class="thumb ${i===0?'active':''}" data-src="${img}" onclick="switchImg(this)">
+      <img src="${img}" alt="${p.name}">
+    </div>`).join('');
+
+  // Sizes
+  const sizesEl = document.getElementById('d-sizes');
+  sizesEl.innerHTML = p.sizes.map(s =>
+    `<button class="sz" onclick="selectSize(this,'${s}')">${s}</button>`
+  ).join('');
+  selectedSize = null;
+
+  // Related
+  const related = PRODUCTS.filter(x => x.id !== p.id && x.cat === p.cat).slice(0,4);
+  document.getElementById('related-grid').innerHTML = related.map(r => productCardHTML(r)).join('');
+
+  // Qty
+  qty = 1;
+  document.getElementById('qVal').value = 1;
+  document.getElementById('qMinus').onclick = () => { qty = Math.max(1,qty-1); document.getElementById('qVal').value = qty; };
+  document.getElementById('qPlus').onclick = () => { qty++; document.getElementById('qVal').value = qty; };
+}
+
+function switchImg(el) {
+  document.getElementById('mainImg').style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('mainImg').src = el.dataset.src;
+    document.getElementById('mainImg').style.opacity = '1';
+  }, 150);
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function selectSize(el, s) {
+  selectedSize = s;
+  document.querySelectorAll('.sz').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function doAddToCart() {
+  if (!selectedSize) { showToast('Please select a size first'); return; }
+  addToCart(product.id, selectedSize, qty);
+}
+</script>
+</body>
+</html>
