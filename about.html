@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — VELA</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* HERO */
+.about-hero {
+  min-height: 72vh; display: flex; align-items: flex-end;
+  padding: 0 56px 80px;
+  position: relative; overflow: hidden;
+  background: #1a130c;
+  margin-top: var(--nav-h);
+}
+.about-hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1800&q=80') center/cover no-repeat;
+  opacity: 0.25;
+}
+.about-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,19,12,0.92) 0%, rgba(26,19,12,0.05) 60%);
+}
+.about-hero-content { position: relative; z-index: 2; max-width: 660px; }
+.about-hero-content .eyebrow { color: var(--gold-light); animation: aFadeUp 0.8s 0.1s both; }
+.about-hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400;
+  color: var(--parchment); line-height: 1.06; margin-bottom: 20px;
+  animation: aFadeUp 0.8s 0.25s both;
+}
+.about-hero-content h1 em { font-style: italic; color: var(--gold-light); }
+.about-hero-content p {
+  color: rgba(247,243,238,0.55); font-size: 1rem; line-height: 1.8;
+  max-width: 480px; animation: aFadeUp 0.8s 0.4s both;
+}
+@keyframes aFadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+/* NUMBERS */
+.numbers { background: var(--terracotta); color: #fff; }
+.numbers-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2px; background: rgba(255,255,255,0.15);
+}
+.num-cell {
+  background: var(--terracotta); padding: 48px 36px; text-align: center;
+}
+.num-cell .figure {
+  font-family: 'Playfair Display', serif; font-size: 3.2rem;
+  font-weight: 400; line-height: 1; margin-bottom: 8px; color: #fff;
+}
+.num-cell p { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+
+/* STORY */
+.story-wrap { background: var(--parchment); }
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.story-img { aspect-ratio: 4/5; overflow: hidden; }
+.story-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.story-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400;
+  margin-bottom: 24px; line-height: 1.2;
+}
+.story-text p { font-size: 0.9rem; line-height: 1.9; color: #4a4542; margin-bottom: 18px; }
+.story-text blockquote {
+  border-left: 3px solid var(--terracotta); padding-left: 20px;
+  font-family: 'Playfair Display', serif; font-size: 1.2rem;
+  font-style: italic; color: var(--ink-soft); margin: 28px 0; line-height: 1.6;
+}
+
+/* VALUES */
+.values { background: var(--white); }
+.val-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--sand); }
+.val-card {
+  background: var(--white); padding: 48px 36px;
+  transition: background 0.3s;
+}
+.val-card:hover { background: var(--linen); }
+.val-num {
+  font-family: 'Playfair Display', serif; font-size: 2.8rem;
+  color: var(--sand); font-weight: 400; line-height: 1; margin-bottom: 20px;
+}
+.val-card h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 12px;
+}
+.val-card p { font-size: 0.84rem; line-height: 1.8; color: var(--stone); }
+
+/* TEAM */
+.team { background: var(--linen); }
+.team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 36px; }
+.team-card { text-align: center; }
+.team-photo { width: 140px; height: 140px; border-radius: 50%; overflow: hidden; margin: 0 auto 18px; background: var(--sand); }
+.team-photo img { width: 100%; height: 100%; object-fit: cover; }
+.team-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 4px; }
+.team-card .role { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.team-card p { font-size: 0.8rem; line-height: 1.75; color: var(--stone); max-width: 220px; margin: 0 auto; }
+
+/* MANIFESTO */
+.manifesto {
+  background: var(--ink); color: var(--parchment);
+  padding: 100px 56px; text-align: center;
+}
+.manifesto h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 400;
+  max-width: 760px; margin: 0 auto 32px; line-height: 1.4;
+}
+.manifesto h2 em { color: var(--gold-light); }
+.manifesto p { color: rgba(247,243,238,0.48); font-size: 0.88rem; max-width: 480px; margin: 0 auto 36px; }
+
+@media (max-width: 960px) {
+  .about-hero { padding: 0 28px 64px; }
+  .numbers-grid { grid-template-columns: repeat(2,1fr); }
+  .story-grid { grid-template-columns: 1fr; gap: 36px; }
+  .val-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .manifesto { padding: 72px 28px; }
+}
+@media (max-width: 640px) {
+  .about-hero { padding: 0 20px 52px; }
+  .num-cell { padding: 36px 20px; }
+  .num-cell .figure { font-size: 2.4rem; }
+  .team-grid { grid-template-columns: 1fr; }
+  .manifesto { padding: 56px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="page-body">
+
+  <!-- HERO -->
+  <div class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-content">
+      <span class="eyebrow">Est. 2018 · Bengaluru</span>
+      <h1>Crafted with<br><em>Purpose</em></h1>
+      <p>We believe clothing is more than fabric. It's how you meet the world — and we build every piece with that in mind.</p>
+    </div>
+  </div>
+
+  <!-- NUMBERS -->
+  <div class="numbers">
+    <div class="numbers-grid">
+      <div class="num-cell"><p class="figure">6</p><p>Artisan Workshops</p></div>
+      <div class="num-cell"><p class="figure">40+</p><p>Cities Across India</p></div>
+      <div class="num-cell"><p class="figure">12k</p><p>Happy Customers</p></div>
+      <div class="num-cell"><p class="figure">100%</p><p>Ethical Sourcing</p></div>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section class="story-wrap section">
+    <div class="story-grid">
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80" alt="Our Story">
+      </div>
+      <div class="story-text">
+        <span class="eyebrow">Our Story</span>
+        <h2>Born from a belief that less is always more.</h2>
+        <p>VELA was founded in 2018 in Bengaluru with a simple idea: make fewer things, better. In a world saturated with options and overwhelmed by trends, we wanted to offer something different — a carefully curated wardrobe of pieces that actually last.</p>
+        <blockquote>"I wanted to build the brand I'd actually want to buy from. Less noise. More craft."</blockquote>
+        <p>Our founder, Priya Nair, had spent a decade in the fashion industry and was tired of the waste — clothes that fell apart, collections that chased trends instead of longevity. She set out to build something with genuine purpose.</p>
+        <p>Today, VELA ships across India, working with six artisan workshops and a growing community of customers who believe in buying better, not more.</p>
+        <a class="btn btn-dark" href="shop.html">Shop the Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values section">
+    <span class="eyebrow">What We Stand For</span>
+    <h2 class="section-title">Our Values</h2>
+    <div class="val-grid">
+      <div class="val-card">
+        <p class="val-num">01</p>
+        <h3>Timeless Design</h3>
+        <p>We reject fast fashion. Every piece is designed to transcend seasons — to be worn, loved, and passed down. Our design language is rooted in restraint and lasting beauty.</p>
+      </div>
+      <div class="val-card">
+        <p class="val-num">02</p>
+        <h3>Ethical Sourcing</h3>
+        <p>Every material we use is traced from origin. We partner only with suppliers who share our commitment to fair labor, environmental responsibility, and full transparency.</p>
+      </div>
+      <div class="val-card">
+        <p class="val-num">03</p>
+        <h3>Exceptional Craft</h3>
+        <p>Our pieces are made in small batches by skilled artisans. We invest in the people who make our clothes, and that investment shows in every stitch and seam.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team section">
+    <span class="eyebrow">The People Behind VELA</span>
+    <h2 class="section-title">Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&q=80" alt="Priya Nair">
+        </div>
+        <h4>Priya Nair</h4>
+        <p class="role">Founder & Creative Director</p>
+        <p>A decade in fashion, a lifetime of conviction. Priya started VELA to prove that slow fashion can be beautiful.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt="Rohan Mehta">
+        </div>
+        <h4>Rohan Mehta</h4>
+        <p class="role">Head of Production</p>
+        <p>Rohan oversees all six workshops and ensures every piece meets our exacting standards before it ships.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80" alt="Ananya Singh">
+        </div>
+        <h4>Ananya Singh</h4>
+        <p class="role">Head of Sustainability</p>
+        <p>Ananya maps every material to its source and holds us accountable to our environmental commitments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <div class="manifesto">
+    <h2>We believe every purchase is a vote for the <em>kind of world</em> you want to live in.</h2>
+    <p>When you choose VELA, you're choosing fewer, better things — and a fashion industry that respects the people and planet behind every garment.</p>
+    <a class="btn btn-outline-white" href="shop.html">Shop Responsibly</a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2>Stay Connected</h2>
+    <p>New arrivals, journal entries, and the occasional treat — straight to your inbox.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Your email address">
+      <button class="nl-btn" onclick="subscribeNewsletter(this)">Subscribe</button>
+    </div>
+  </div>
+
+</div>
+<script src="main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => { renderFooter(); });
+</script>
+</body>
+</html>
