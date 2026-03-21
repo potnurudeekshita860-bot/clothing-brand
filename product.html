@@ -1,278 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PPKKFMM7');</script>
-<!-- End Google Tag Manager -->
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VP5DLB4BY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6VP5DLB4BY');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product — VELA</title>
+<title>Product — Lumière Beauty</title>
 <link rel="stylesheet" href="style.css">
 <style>
 .detail-wrap {
-  max-width: 1240px; margin: 0 auto;
+  max-width: 1280px; margin: 0 auto;
   padding: 40px 56px 96px;
 }
-.breadcrumb {
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--stone); margin-bottom: 36px;
-  display: flex; gap: 8px; align-items: center;
+.bc {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mist); margin-bottom: 40px;
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
 }
-.breadcrumb a { color: var(--stone); text-decoration: none; transition: color 0.2s; }
-.breadcrumb a:hover { color: var(--terracotta); }
-.breadcrumb span { color: var(--sand); }
+.bc a { color: var(--mist); text-decoration: none; transition: color 0.2s; }
+.bc a:hover { color: var(--rose); }
+.bc span { color: var(--rose-pale); }
 
 .detail-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
 }
 
 /* Gallery */
-.gallery { position: sticky; top: 88px; }
-.main-shot {
-  aspect-ratio: 3/4; overflow: hidden; background: var(--sand); margin-bottom: 12px;
+.gallery { position: sticky; top: 90px; }
+.main-img {
+  aspect-ratio: 1/1.15; overflow: hidden; background: var(--blush); margin-bottom: 12px;
+  cursor: zoom-in;
 }
-.main-shot img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
-.thumbs { display: flex; gap: 10px; }
-.thumb {
-  width: 78px; aspect-ratio: 3/4; overflow: hidden; background: var(--sand);
+.main-img img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s, transform 0.4s; }
+.main-img:hover img { transform: scale(1.04); }
+.thumb-strip { display: flex; gap: 10px; }
+.d-thumb {
+  width: 76px; aspect-ratio: 1/1.15; overflow: hidden; background: var(--blush);
   cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s;
 }
-.thumb.active { border-color: var(--terracotta); }
-.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.d-thumb.active { border-color: var(--rose); }
+.d-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Info */
-.detail-info { padding-top: 4px; }
-.detail-brand {
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.24em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+.detail-info { padding-top: 8px; }
+.d-brand {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--rose); margin-bottom: 10px;
 }
 .detail-info h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.15;
-  margin-bottom: 16px;
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 400; line-height: 1.15; margin-bottom: 12px;
 }
-.detail-price { font-size: 1.25rem; font-weight: 500; margin-bottom: 8px; }
-.detail-price .was { text-decoration: line-through; color: var(--stone); font-weight: 400; margin-right: 10px; }
-.detail-price .now { color: var(--terracotta); }
-.rating-row {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 0.78rem; color: var(--stone); margin-bottom: 28px;
+.d-price { font-size: 1.3rem; font-weight: 600; margin-bottom: 4px; }
+.d-price .was { text-decoration: line-through; color: var(--mist); font-weight: 400; margin-right: 10px; }
+.d-price .now { color: var(--rose); }
+.d-badge {
+  display: inline-block; font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 12px;
 }
-.stars { color: var(--gold); letter-spacing: 2px; }
 
-.divider { border: none; border-top: 1px solid var(--sand); margin: 24px 0; }
+.divider { border: none; border-top: 1px solid var(--rose-pale); margin: 22px 0; }
 
-.detail-desc { font-size: 0.9rem; line-height: 1.85; color: #4a4542; margin-bottom: 28px; }
+.d-desc { font-size: 0.9rem; line-height: 1.9; color: #5a4d52; margin-bottom: 0; }
 
-.label-sm {
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--stone); margin-bottom: 12px; display: flex;
-  justify-content: space-between; align-items: center;
+.var-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--mist); margin-bottom: 12px;
+  display: flex; justify-content: space-between; align-items: center;
 }
-.label-sm a { color: var(--terracotta); font-weight: 400; cursor: pointer; }
+.var-label span.selected { color: var(--noir); font-weight: 400; letter-spacing: 0; font-size: 0.82rem; text-transform: none; }
 
 .add-btn {
-  width: 100%; padding: 17px; background: var(--ink); color: var(--parchment);
-  border: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em;
-  text-transform: uppercase; cursor: pointer; transition: all 0.25s;
-  font-family: 'Jost', sans-serif; margin-bottom: 12px;
+  width: 100%; padding: 18px; background: var(--rose); color: #fff;
+  border: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; cursor: pointer; font-family: 'Mulish', sans-serif;
+  transition: all 0.25s; margin-bottom: 12px;
 }
-.add-btn:hover { background: var(--terracotta); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,97,74,0.25); }
+.add-btn:hover { background: var(--rose-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(181,67,106,0.3); }
 .wish-btn {
-  width: 100%; padding: 15px; background: transparent; color: var(--ink);
-  border: 1.5px solid var(--sand); font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
-  transition: all 0.22s; font-family: 'Jost', sans-serif;
+  width: 100%; padding: 15px; background: transparent; color: var(--noir);
+  border: 1.5px solid var(--rose-pale); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+  font-family: 'Mulish', sans-serif; transition: all 0.22s;
 }
-.wish-btn:hover { border-color: var(--ink); }
+.wish-btn:hover { border-color: var(--rose); color: var(--rose); }
 
-.perks { margin-top: 28px; }
-.perk {
-  display: flex; align-items: flex-start; gap: 12px;
-  font-size: 0.8rem; color: var(--stone); padding: 8px 0;
-  border-bottom: 1px solid var(--sand);
+.perks { margin-top: 28px; border-top: 1px solid var(--rose-pale); padding-top: 24px; }
+.perk-item {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.8rem; color: var(--stone); padding: 9px 0;
+  border-bottom: 1px solid var(--blush);
 }
-.perk:last-child { border-bottom: none; }
-.perk-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.perk-item:last-child { border-bottom: none; }
+.perk-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+
+/* Tabs */
+.tabs { margin-top: 72px; }
+.tab-nav { display: flex; border-bottom: 1px solid var(--rose-pale); margin-bottom: 32px; }
+.tab-btn {
+  padding: 12px 28px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; background: transparent; border: none;
+  cursor: pointer; font-family: 'Mulish', sans-serif; color: var(--mist);
+  border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s;
+}
+.tab-btn.active { color: var(--rose); border-bottom-color: var(--rose); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.tab-content p { font-size: 0.9rem; line-height: 1.9; color: var(--stone); max-width: 600px; margin-bottom: 14px; }
+.ingr-list {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px;
+}
+.ingr-tag {
+  background: var(--blush); padding: 7px 16px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--rose); border: 1px solid var(--rose-pale);
+}
+.review-item { padding: 20px 0; border-bottom: 1px solid var(--blush); }
+.review-item:last-child { border-bottom: none; }
+.review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.review-name { font-weight: 700; font-size: 0.85rem; }
+.review-date { font-size: 0.72rem; color: var(--mist); }
+.review-text { font-size: 0.87rem; line-height: 1.75; color: var(--stone); }
 
 /* Related */
-.related-section { background: var(--linen); }
-.related-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px 24px; }
+.related { background: var(--blush); }
+.related-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px 22px; }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) { .related-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 900px) {
   .detail-wrap { padding: 28px 28px 72px; }
-  .detail-grid { grid-template-columns: 1fr; gap: 36px; }
+  .detail-grid { grid-template-columns: 1fr; gap: 40px; }
   .gallery { position: static; }
-  .related-grid { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 640px) {
   .detail-wrap { padding: 20px 20px 56px; }
+  .related-grid { grid-template-columns: repeat(2,1fr); gap: 18px 12px; }
 }
 </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPKKFMM7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="page-body">
+<div class="detail-wrap">
+  <div class="bc">
+    <a href="index.html">Home</a><span>/</span>
+    <a href="shop.html">Shop</a><span>/</span>
+    <span id="bc-name">Product</span>
+  </div>
 
-  <div class="detail-wrap">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>/</span>
-      <a href="shop.html">Shop</a>
-      <span>/</span>
-      <span id="bc-name">Product</span>
+  <div class="detail-grid">
+    <!-- Gallery -->
+    <div class="gallery">
+      <div class="main-img"><img id="mainImg" src="" alt=""></div>
+      <div class="thumb-strip" id="thumbStrip"></div>
     </div>
 
-    <div class="detail-grid">
-      <!-- Gallery -->
-      <div class="gallery">
-        <div class="main-shot"><img id="mainImg" src="" alt=""></div>
-        <div class="thumbs" id="thumbRow"></div>
+    <!-- Info -->
+    <div class="detail-info">
+      <p class="d-brand">Lumière Beauty</p>
+      <h1 id="d-name"></h1>
+      <p class="d-price" id="d-price"></p>
+      <div class="rating-row">
+        <span class="stars" id="d-stars"></span>
+        <span id="d-reviews"></span>
+      </div>
+      <span class="d-badge" id="d-badge"></span>
+      <hr class="divider">
+      <p class="d-desc" id="d-desc"></p>
+      <hr class="divider">
+
+      <!-- Variant -->
+      <div id="variant-block"></div>
+
+      <!-- Qty -->
+      <p class="var-label">Quantity</p>
+      <div class="qty-row">
+        <button class="q-btn" id="qMinus">−</button>
+        <input class="q-val" id="qVal" value="1" readonly>
+        <button class="q-btn" id="qPlus">+</button>
       </div>
 
-      <!-- Info -->
-      <div class="detail-info">
-        <p class="detail-brand">VELA Collection</p>
-        <h1 id="d-name"></h1>
-        <p class="detail-price" id="d-price"></p>
-        <div class="rating-row">
-          <span class="stars">★★★★★</span>
-          <span>(48 reviews)</span>
-        </div>
-        <hr class="divider">
-        <p class="detail-desc" id="d-desc"></p>
-        <hr class="divider">
+      <button class="add-btn" onclick="doAdd()">Add to Bag</button>
+      <button class="wish-btn" onclick="doWish()">♡ &nbsp; Save to Wishlist</button>
 
-        <p class="label-sm">
-          <span>Select Size</span>
-          <a>Size Guide</a>
-        </p>
-        <div class="size-grid" id="d-sizes"></div>
-
-        <p class="label-sm">Quantity</p>
-        <div class="qty-wrap">
-          <button class="qty-btn" id="qMinus">−</button>
-          <input class="qty-val" id="qVal" value="1" readonly>
-          <button class="qty-btn" id="qPlus">+</button>
-        </div>
-
-        <button class="add-btn" onclick="doAddToCart()">Add to Bag</button>
-        <button class="wish-btn">♡ &nbsp; Save to Wishlist</button>
-
-        <div class="perks">
-          <div class="perk"><span class="perk-icon">🚚</span><span>Free shipping on orders over ₹3,999</span></div>
-          <div class="perk"><span class="perk-icon">↩</span><span>Free returns within 30 days</span></div>
-          <div class="perk"><span class="perk-icon">🌿</span><span>Sustainably and ethically sourced materials</span></div>
-          <div class="perk"><span class="perk-icon">🔒</span><span>Secure checkout — Razorpay & UPI accepted</span></div>
-        </div>
+      <div class="perks">
+        <div class="perk-item"><span class="perk-icon">🚚</span> Free shipping on orders over ₹1,499</div>
+        <div class="perk-item"><span class="perk-icon">↩</span> Free returns within 30 days</div>
+        <div class="perk-item"><span class="perk-icon">🌿</span> 100% Vegan & Cruelty-Free</div>
+        <div class="perk-item"><span class="perk-icon">🔬</span> Dermatologist tested formula</div>
+        <div class="perk-item"><span class="perk-icon">🔒</span> Secure checkout · Razorpay & UPI</div>
       </div>
     </div>
   </div>
 
-  <!-- Related -->
-  <section class="related-section section">
-    <span class="eyebrow">You May Also Like</span>
-    <h2 class="section-title">Related Products</h2>
-    <div class="related-grid" id="related-grid"></div>
-  </section>
-
-  <div class="newsletter">
-    <h2>Stay in the Loop</h2>
-    <p>New arrivals, exclusive offers, and styling tips straight to your inbox.</p>
-    <div class="nl-form">
-      <input class="nl-input" type="email" placeholder="Your email address">
-      <button class="nl-btn" onclick="subscribeNewsletter(this)">Subscribe</button>
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('details',this)">Product Details</button>
+      <button class="tab-btn" onclick="switchTab('ingredients',this)">Key Ingredients</button>
+      <button class="tab-btn" onclick="switchTab('how',this)">How to Use</button>
+      <button class="tab-btn" onclick="switchTab('reviews',this)">Reviews</button>
+    </div>
+    <div class="tab-content active" id="tab-details">
+      <p id="tab-details-text"></p>
+    </div>
+    <div class="tab-content" id="tab-ingredients">
+      <p>Our formulas are built on clean, high-performance actives — no fillers, no harmful additives.</p>
+      <div class="ingr-list" id="ingr-list"></div>
+    </div>
+    <div class="tab-content" id="tab-how">
+      <p id="how-text"></p>
+    </div>
+    <div class="tab-content" id="tab-reviews">
+      <div id="reviews-list"></div>
     </div>
   </div>
-
 </div>
+
+<!-- Related -->
+<section class="related section">
+  <span class="eyebrow">You May Also Like</span>
+  <h2 class="section-title">Related <em>Products</em></h2>
+  <div class="related-grid" id="related-grid"></div>
+</section>
+
+<div class="newsletter">
+  <h2>Join the Lumière Circle</h2>
+  <p>Exclusive launches, expert tips, and members-only offers.</p>
+  <div class="nl-row">
+    <input class="nl-in" type="email" placeholder="Your email address">
+    <button class="nl-go" onclick="nlSubscribe(this)">Subscribe</button>
+  </div>
+</div>
+
 <script src="main.js"></script>
 <script>
-let product = null;
-let selectedSize = null;
-let qty = 1;
+let prod = null, selectedVariant = null, qty = 1;
+
+const HOW = {
+  skincare: 'Apply 2–3 drops to clean, slightly damp skin morning and night. Pat gently — do not rub. Always follow with SPF in the morning.',
+  makeup: 'Apply with fingertips, a brush, or a damp sponge. Build coverage gradually. Set with a translucent powder for longer wear.',
+  hair: 'Apply a small amount to damp or dry hair, focusing on mid-lengths to ends. Style as usual. Suitable for daily use.',
+  fragrance: 'Spray onto pulse points — wrists, neck, and behind the ears. Do not rub. Allow to dry naturally for best longevity.',
+  body: 'Massage into clean skin using circular motions. For best results, apply to slightly damp skin immediately after showering.',
+};
+
+const INGR_MAP = {
+  skincare:   ['Hyaluronic Acid','Niacinamide','Vitamin C','Ceramides','Squalane','Centella Asiatica','Retinol','Peptides'],
+  makeup:     ['Vitamin E','SPF 30','Mica','Titanium Dioxide','Jojoba Oil','Argan Oil'],
+  hair:       ['Keratin','Biotin','Panthenol','Argan Oil','Rosehip Oil'],
+  fragrance:  ['Bulgarian Rose','Bergamot','Oud','Sandalwood','Musk','Jasmine'],
+  body:       ['Shea Butter','Cocoa Butter','Vitamin E','Caffeine','Sweet Almond Oil'],
+};
+
+const SAMPLE_REVIEWS = [
+  { name:'Priya S.', rating:5, date:'March 2026', text:'Absolutely love this product. I\'ve seen a visible difference in my skin within two weeks of use. The texture is incredible — lightweight but so effective.' },
+  { name:'Meera K.', rating:5, date:'February 2026', text:'Finally found a product that actually delivers on its promises! My skin feels so much more hydrated and the glow is real. Will definitely repurchase.' },
+  { name:'Aisha M.', rating:4, date:'January 2026', text:'Great product overall. I\'d give it 5 stars but I wish it came in a larger size. The results speak for themselves though — my friends keep asking what\'s different.' },
+];
 
 document.addEventListener('DOMContentLoaded', () => {
   renderFooter();
   const id = parseInt(new URLSearchParams(location.search).get('id'));
-  product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
-  loadProduct(product);
+  prod = PRODUCTS.find(p=>p.id===id) || PRODUCTS[0];
+  loadProduct(prod);
 });
 
 function loadProduct(p) {
-  document.title = p.name + ' — VELA';
+  document.title = p.name + ' — Lumière Beauty';
   document.getElementById('bc-name').textContent = p.name;
   document.getElementById('d-name').textContent = p.name;
   document.getElementById('d-desc').textContent = p.desc;
-  document.getElementById('mainImg').src = p.imgs[0];
-  document.getElementById('mainImg').alt = p.name;
+  document.getElementById('tab-details-text').textContent = p.desc + ' Our formula is free from parabens, sulphates, and synthetic fragrances. Dermatologist tested and suitable for all skin types, including sensitive skin.';
+  document.getElementById('how-text').textContent = HOW[p.cat] || HOW.skincare;
 
   // Price
-  const priceEl = document.getElementById('d-price');
-  priceEl.innerHTML = p.was
+  document.getElementById('d-price').innerHTML = p.was
     ? `<span class="was">₹${p.was.toLocaleString()}</span><span class="now">₹${p.price.toLocaleString()}</span>`
     : `₹${p.price.toLocaleString()}`;
 
-  // Thumbs
-  const thumbRow = document.getElementById('thumbRow');
-  thumbRow.innerHTML = p.imgs.map((img,i) => `
-    <div class="thumb ${i===0?'active':''}" data-src="${img}" onclick="switchImg(this)">
-      <img src="${img}" alt="${p.name}">
+  // Stars
+  document.getElementById('d-stars').textContent = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5-Math.round(p.rating));
+  document.getElementById('d-reviews').textContent = `(${p.reviews} reviews)`;
+
+  // Badge
+  const badgeEl = document.getElementById('d-badge');
+  if (p.badge==='new')  { badgeEl.textContent='New Arrival'; badgeEl.style.cssText='background:var(--noir);color:var(--ivory)'; }
+  else if (p.badge==='sale') { badgeEl.textContent='On Sale'; badgeEl.style.cssText='background:var(--rose);color:#fff'; }
+  else if (p.badge==='best') { badgeEl.textContent='Best Seller'; badgeEl.style.cssText='background:var(--gold);color:var(--noir)'; }
+  else badgeEl.style.display='none';
+
+  // Images
+  document.getElementById('mainImg').src = p.img;
+  document.getElementById('mainImg').alt = p.name;
+  const imgs = [p.img, p.img2].filter(Boolean);
+  document.getElementById('thumbStrip').innerHTML = imgs.map((src,i)=>
+    `<div class="d-thumb ${i===0?'active':''}" data-src="${src}" onclick="switchImg(this)"><img src="${src}" alt=""></div>`
+  ).join('');
+
+  // Variant
+  const vb = document.getElementById('variant-block');
+  if (p.sizes) {
+    selectedVariant = p.sizes[0];
+    vb.innerHTML = `
+      <p class="var-label">Size <span class="selected" id="sizeSelected">${p.sizes[0]}</span></p>
+      <div class="size-picker">${p.sizes.map((s,i)=>`<button class="sz ${i===0?'active':''}" onclick="selectVar(this,'${s}')">${s}</button>`).join('')}</div>`;
+  } else if (p.shades) {
+    selectedVariant = p.shades[0];
+    vb.innerHTML = `
+      <p class="var-label">Shade <span class="selected" id="shadeSelected">Selected</span></p>
+      <div class="shade-picker">${p.shades.map((c,i)=>`<div class="shade ${i===0?'active':''}" style="background:${c}" onclick="selectShade(this,'${c}')" title="${c}"></div>`).join('')}</div>`;
+  } else {
+    selectedVariant = 'standard';
+    vb.innerHTML = '';
+  }
+
+  // Ingredients
+  document.getElementById('ingr-list').innerHTML = (INGR_MAP[p.cat]||[]).map(i=>`<span class="ingr-tag">${i}</span>`).join('');
+
+  // Reviews
+  document.getElementById('reviews-list').innerHTML = SAMPLE_REVIEWS.map(r=>`
+    <div class="review-item">
+      <div class="review-header">
+        <span class="stars">${'★'.repeat(r.rating)+'☆'.repeat(5-r.rating)}</span>
+        <span class="review-name">${r.name}</span>
+        <span class="review-date">${r.date}</span>
+      </div>
+      <p class="review-text">${r.text}</p>
     </div>`).join('');
 
-  // Sizes
-  const sizesEl = document.getElementById('d-sizes');
-  sizesEl.innerHTML = p.sizes.map(s =>
-    `<button class="sz" onclick="selectSize(this,'${s}')">${s}</button>`
-  ).join('');
-  selectedSize = null;
-
   // Related
-  const related = PRODUCTS.filter(x => x.id !== p.id && x.cat === p.cat).slice(0,4);
-  document.getElementById('related-grid').innerHTML = related.map(r => productCardHTML(r)).join('');
+  const related = PRODUCTS.filter(x=>x.id!==p.id&&x.cat===p.cat).slice(0,4);
+  document.getElementById('related-grid').innerHTML = related.map(cardHTML).join('');
 
   // Qty
-  qty = 1;
-  document.getElementById('qVal').value = 1;
-  document.getElementById('qMinus').onclick = () => { qty = Math.max(1,qty-1); document.getElementById('qVal').value = qty; };
-  document.getElementById('qPlus').onclick = () => { qty++; document.getElementById('qVal').value = qty; };
+  qty = 1; document.getElementById('qVal').value = 1;
+  document.getElementById('qMinus').onclick = () => { qty=Math.max(1,qty-1); document.getElementById('qVal').value=qty; };
+  document.getElementById('qPlus').onclick  = () => { qty++; document.getElementById('qVal').value=qty; };
 }
 
 function switchImg(el) {
-  document.getElementById('mainImg').style.opacity = '0';
-  setTimeout(() => {
-    document.getElementById('mainImg').src = el.dataset.src;
-    document.getElementById('mainImg').style.opacity = '1';
-  }, 150);
-  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  const img = document.getElementById('mainImg');
+  img.style.opacity='0';
+  setTimeout(()=>{ img.src=el.dataset.src; img.style.opacity='1'; },200);
+  document.querySelectorAll('.d-thumb').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
 }
 
-function selectSize(el, s) {
-  selectedSize = s;
-  document.querySelectorAll('.sz').forEach(b => b.classList.remove('active'));
+function selectVar(el, s) {
+  selectedVariant = s;
+  document.querySelectorAll('.sz').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
+  const sel = document.getElementById('sizeSelected');
+  if (sel) sel.textContent = s;
 }
 
-function doAddToCart() {
-  if (!selectedSize) { showToast('Please select a size first'); return; }
-  addToCart(product.id, selectedSize, qty);
+function selectShade(el, c) {
+  selectedVariant = c;
+  document.querySelectorAll('.shade').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  const sel = document.getElementById('shadeSelected');
+  if (sel) sel.textContent = c;
+}
+
+function doAdd() {
+  if (!selectedVariant) { showToast('Please select an option'); return; }
+  addToCart(prod.id, selectedVariant, qty);
+}
+
+function doWish() {
+  addToWishlist(prod.id);
+}
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
 }
 </script>
 </body>
