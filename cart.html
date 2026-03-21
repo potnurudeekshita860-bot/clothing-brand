@@ -1,272 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PPKKFMM7');</script>
-<!-- End Google Tag Manager -->
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VP5DLB4BY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6VP5DLB4BY');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Bag — VELA</title>
+<title>Your Bag — Lumière Beauty</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.cart-wrap {
-  max-width: 1160px; margin: 0 auto;
-  padding: 48px 56px 96px;
-}
+.cart-wrap { max-width: 1200px; margin: 0 auto; padding: 48px 56px 96px; }
 .cart-head { margin-bottom: 40px; }
-.cart-head h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400;
-}
+.cart-head .eyebrow { margin-bottom: 8px; }
+.cart-head h1 { font-family: 'Bodoni Moda', serif; font-size: clamp(2rem,4vw,3.2rem); font-weight: 400; }
+
 .cart-layout { display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: start; }
 
-.free-ship-bar {
-  background: var(--linen); border: 1px solid var(--sand);
+/* Progress bar */
+.fs-bar {
+  background: var(--blush); border: 1px solid var(--rose-pale);
   padding: 14px 18px; margin-bottom: 20px; font-size: 0.82rem;
 }
-.fsb-track {
-  width: 100%; height: 3px; background: var(--sand); margin-top: 8px; overflow: hidden;
-}
-.fsb-fill { height: 100%; background: var(--terracotta); transition: width 0.4s; }
+.fs-track { width:100%; height:3px; background:var(--rose-pale); margin-top:8px; overflow:hidden; }
+.fs-fill { height:100%; background:var(--rose); transition:width 0.5s; }
 
-.empty-bag { text-align: center; padding: 100px 0; grid-column: 1/-1; }
-.empty-bag h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 12px; }
-.empty-bag p { color: var(--stone); margin-bottom: 32px; }
+/* Empty */
+.empty-state { grid-column:1/-1; text-align:center; padding:96px 0; }
+.empty-state h3 { font-family:'Bodoni Moda',serif; font-size:2.2rem; font-weight:400; margin-bottom:10px; }
+.empty-state p { color:var(--mist); margin-bottom:32px; }
 
-/* Checkout form */
-.checkout-form { margin-top: 32px; }
-.checkout-form h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 20px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-.form-group label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); }
-.form-group input, .form-group select {
-  padding: 12px 14px; border: 1.5px solid var(--sand);
-  background: var(--white); font-family: 'Jost', sans-serif;
-  font-size: 0.88rem; color: var(--ink); outline: none; transition: border-color 0.2s;
-}
-.form-group input:focus, .form-group select:focus { border-color: var(--terracotta); }
+/* Confirmed */
+.confirmed { text-align:center; padding:80px 24px; display:none; }
+.confirmed .tick { font-size:3.5rem; margin-bottom:20px; display:block; }
+.confirmed h2 { font-family:'Bodoni Moda',serif; font-size:2.2rem; font-weight:400; margin-bottom:12px; }
+.confirmed p { color:var(--mist); max-width:360px; margin:0 auto 36px; line-height:1.8; }
 
-.checkout-btn {
-  width: 100%; padding: 17px; background: var(--terracotta); color: #fff;
-  border: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em;
-  text-transform: uppercase; cursor: pointer; font-family: 'Jost', sans-serif;
-  transition: all 0.25s; margin-top: 6px;
+/* Upsell */
+.upsell-strip {
+  background: var(--rose-pale); border: 1px solid rgba(181,67,106,0.2);
+  padding: 24px 28px; margin-top: 32px;
 }
-.checkout-btn:hover { background: var(--terracotta-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,97,74,0.3); }
+.upsell-strip h4 { font-family:'Bodoni Moda',serif; font-size:1rem; font-weight:400; margin-bottom:16px; }
+.upsell-items { display:flex; gap:14px; overflow-x:auto; }
+.upsell-item {
+  flex-shrink:0; width:120px; cursor:pointer; text-align:center;
+}
+.upsell-item img { width:100%; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:var(--blush); }
+.upsell-item p { font-size:0.72rem; line-height:1.3; margin-bottom:4px; }
+.upsell-item span { font-size:0.72rem; font-weight:700; color:var(--rose); }
 
-.order-confirmed {
-  text-align: center; padding: 80px 24px; display: none;
+@media (max-width:960px) {
+  .cart-wrap { padding:36px 28px 72px; }
+  .cart-layout { grid-template-columns:1fr; }
+  .sum-box { position:static; }
 }
-.order-confirmed .check { font-size: 3rem; margin-bottom: 20px; display: block; }
-.order-confirmed h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 12px; }
-.order-confirmed p { color: var(--stone); margin-bottom: 32px; }
-
-@media (max-width: 960px) {
-  .cart-wrap { padding: 36px 28px 72px; }
-  .cart-layout { grid-template-columns: 1fr; }
-  .summary-box { position: static; }
-  .form-row { grid-template-columns: 1fr; }
-}
-@media (max-width: 640px) {
-  .cart-wrap { padding: 24px 20px 56px; }
+@media (max-width:640px) {
+  .cart-wrap { padding:24px 20px 56px; }
+  .c-row { grid-template-columns:76px 1fr; }
+  .c-price { grid-column:2; }
 }
 </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPKKFMM7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="page-body">
-
-  <div class="cart-wrap">
-    <div class="cart-head">
-      <span class="eyebrow">Shopping</span>
-      <h1>Your Bag</h1>
-    </div>
-
-    <div id="order-confirmed" class="order-confirmed">
-      <span class="check">🎉</span>
-      <h2>Order Confirmed!</h2>
-      <p>Thank you for shopping with VELA. You'll receive a confirmation email shortly.</p>
-      <a class="btn btn-dark" href="index.html">Back to Home</a>
-    </div>
-
-    <div id="cart-main"></div>
+<div class="cart-wrap">
+  <div class="cart-head">
+    <span class="eyebrow">Shopping</span>
+    <h1>Your Bag</h1>
   </div>
 
-  <div class="newsletter">
-    <h2>Stay in the Loop</h2>
-    <p>New arrivals, exclusive offers, and styling tips straight to your inbox.</p>
-    <div class="nl-form">
-      <input class="nl-input" type="email" placeholder="Your email address">
-      <button class="nl-btn" onclick="subscribeNewsletter(this)">Subscribe</button>
-    </div>
+  <div class="confirmed" id="confirmed">
+    <span class="tick">💖</span>
+    <h2>Order Confirmed!</h2>
+    <p>Thank you for your order! You'll receive a confirmation email shortly with tracking details.</p>
+    <a class="btn btn-rose" href="index.html">Continue Shopping</a>
   </div>
 
+  <div id="cartMain"></div>
 </div>
+
+<div class="newsletter">
+  <h2>Join the Lumière Circle</h2>
+  <p>Exclusive launches, expert tips, and members-only offers.</p>
+  <div class="nl-row">
+    <input class="nl-in" type="email" placeholder="Your email address">
+    <button class="nl-go" onclick="nlSubscribe(this)">Subscribe</button>
+  </div>
+</div>
+
 <script src="main.js"></script>
 <script>
-function renderCartPage() {
+function buildCart() {
   const cart = getCart();
-  const main = document.getElementById('cart-main');
+  const main = document.getElementById('cartMain');
 
   if (!cart.length) {
     main.innerHTML = `
-      <div class="empty-bag">
+      <div class="empty-state">
         <h3>Your bag is empty</h3>
-        <p>Looks like you haven't added anything yet.</p>
-        <a class="btn btn-dark" href="shop.html">Start Shopping</a>
+        <p>Time to find your next ritual.</p>
+        <a class="btn btn-rose" href="shop.html">Shop Now</a>
       </div>`;
     return;
   }
 
   const subtotal = cart.reduce((s,c)=>{
-    const p = PRODUCTS.find(x=>x.id===c.id);
-    return s + (p ? p.price*c.qty : 0);
+    const p=PRODUCTS.find(x=>x.id===c.id); return s+(p?p.price*c.qty:0);
   },0);
-  const shipping = subtotal >= 3999 ? 0 : 299;
+  const shipping = subtotal >= 1499 ? 0 : 149;
   const total = subtotal + shipping;
-  const remaining = Math.max(0, 3999 - subtotal);
-  const fillPct = Math.min(100, (subtotal/3999)*100);
+  const remain = Math.max(0, 1499-subtotal);
+  const fill = Math.min(100,(subtotal/1499)*100);
 
-  const itemsHTML = cart.map(c => {
-    const p = PRODUCTS.find(x=>x.id===c.id);
-    if (!p) return '';
+  const itemsHTML = cart.map(c=>{
+    const p=PRODUCTS.find(x=>x.id===c.id); if(!p) return '';
     return `
-    <div class="cart-row" id="row-${c.id}-${c.size}">
-      <div class="cart-thumb" onclick="location.href='product.html?id=${p.id}'" style="cursor:pointer">
-        <img src="${p.imgs[0]}" alt="${p.name}">
+    <div class="c-row">
+      <div class="c-img" style="cursor:pointer" onclick="location.href='product.html?id=${p.id}'">
+        <img src="${p.img}" alt="${p.name}">
       </div>
       <div>
-        <p class="cart-name">${p.name}</p>
-        <p class="cart-sub">Size: ${c.size} &nbsp;·&nbsp; ${p.cat}</p>
-        <div class="qty-wrap">
-          <button class="qty-btn" onclick="changeQty(${c.id},'${c.size}',-1)">−</button>
-          <input class="qty-val" value="${c.qty}" readonly id="qv-${c.id}-${c.size}">
-          <button class="qty-btn" onclick="changeQty(${c.id},'${c.size}',1)">+</button>
+        <p class="c-name">${p.name}</p>
+        <p class="c-sub">${c.variant} · ${p.cat}</p>
+        <div class="qty-row">
+          <button class="q-btn" onclick="chQty(${c.id},'${c.variant}',-1)">−</button>
+          <input class="q-val" value="${c.qty}" readonly>
+          <button class="q-btn" onclick="chQty(${c.id},'${c.variant}',1)">+</button>
         </div>
-        <button class="remove" onclick="doRemove(${c.id},'${c.size}')">Remove</button>
+        <button class="c-rm" onclick="doRemove(${c.id},'${c.variant}')">Remove</button>
       </div>
-      <div>
-        <p class="cart-price">₹${(p.price*c.qty).toLocaleString()}</p>
-      </div>
+      <div><p class="c-price">₹${(p.price*c.qty).toLocaleString()}</p></div>
     </div>`;
   }).join('');
+
+  // Upsell: products not in cart
+  const cartIds = cart.map(c=>c.id);
+  const upsell = PRODUCTS.filter(p=>!cartIds.includes(p.id)&&p.best).slice(0,4);
+  const upsellHTML = upsell.map(p=>`
+    <div class="upsell-item" onclick="location.href='product.html?id=${p.id}'">
+      <img src="${p.img}" alt="${p.name}">
+      <p>${p.name}</p>
+      <span>₹${p.price.toLocaleString()}</span>
+    </div>`).join('');
 
   main.innerHTML = `
   <div class="cart-layout">
     <div>
-      <div class="free-ship-bar">
-        ${remaining === 0
-          ? `<span style="color:var(--terracotta);font-weight:600;">✓ You've unlocked free shipping!</span>`
-          : `<span>Add ₹${remaining.toLocaleString()} more for free shipping</span>`}
-        <div class="fsb-track"><div class="fsb-fill" style="width:${fillPct}%"></div></div>
+      <div class="fs-bar">
+        ${remain===0
+          ? `<span style="color:var(--rose);font-weight:700;">✓ You've unlocked free shipping!</span>`
+          : `Add ₹${remain.toLocaleString()} more for free shipping`}
+        <div class="fs-track"><div class="fs-fill" style="width:${fill}%"></div></div>
       </div>
       ${itemsHTML}
-    </div>
-    <div class="summary-box">
-      <h3>Order Summary</h3>
-      <div class="sum-row"><span>Subtotal (${cart.reduce((s,c)=>s+c.qty,0)} items)</span><span>₹${subtotal.toLocaleString()}</span></div>
-      <div class="sum-row"><span>Shipping</span><span>${shipping===0?'<span style="color:#4caf50">Free</span>':'₹'+shipping}</span></div>
-      <div class="promo-row">
-        <input class="promo-in" id="promoIn" placeholder="Promo code" type="text">
-        <button class="promo-go" onclick="applyPromo()">Apply</button>
+      <div class="upsell-strip">
+        <h4>You might also love…</h4>
+        <div class="upsell-items">${upsellHTML}</div>
       </div>
-      <div class="sum-row total"><span>Total</span><span>₹${total.toLocaleString()}</span></div>
+    </div>
 
-      <div class="checkout-form" id="checkoutForm">
-        <h3>Delivery Details</h3>
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" placeholder="Aryan">
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" placeholder="Sharma">
-          </div>
+    <div class="sum-box">
+      <h3>Order Summary</h3>
+      <div class="s-row"><span>Subtotal (${cart.reduce((s,c)=>s+c.qty,0)} items)</span><span>₹${subtotal.toLocaleString()}</span></div>
+      <div class="s-row"><span>Shipping</span><span>${shipping===0?'<span style="color:#4caf50">Free</span>':'₹'+shipping}</span></div>
+      <div class="promo-row">
+        <input class="pr-in" id="promoIn" placeholder="Promo code" type="text">
+        <button class="pr-go" onclick="applyPromo()">Apply</button>
+      </div>
+      <div class="s-row total"><span>Total</span><span>₹${total.toLocaleString()}</span></div>
+
+      <div style="margin-top:24px;">
+        <h3 style="font-size:1.1rem;font-family:'Bodoni Moda',serif;font-weight:400;margin-bottom:18px;">Delivery Details</h3>
+        <div class="form-2col">
+          <div class="f-grp"><label>First Name</label><input type="text" placeholder="Aanya"></div>
+          <div class="f-grp"><label>Last Name</label><input type="text" placeholder="Sharma"></div>
         </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="aryan@email.com">
+        <div class="f-grp"><label>Email</label><input type="email" placeholder="aanya@email.com"></div>
+        <div class="f-grp"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
+        <div class="f-grp"><label>Address</label><input type="text" placeholder="Flat 4B, Lotus Towers"></div>
+        <div class="form-2col">
+          <div class="f-grp"><label>City</label><input type="text" placeholder="Mumbai"></div>
+          <div class="f-grp"><label>PIN Code</label><input type="text" placeholder="400001"></div>
         </div>
-        <div class="form-group">
-          <label>Phone</label>
-          <input type="tel" placeholder="+91 98765 43210">
-        </div>
-        <div class="form-group">
-          <label>Address</label>
-          <input type="text" placeholder="Flat 12, Prestige Tower">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>City</label>
-            <input type="text" placeholder="Bengaluru">
-          </div>
-          <div class="form-group">
-            <label>PIN Code</label>
-            <input type="text" placeholder="560001">
-          </div>
-        </div>
-        <div class="form-group">
+        <div class="f-grp">
           <label>State</label>
           <select>
-            <option>Karnataka</option><option>Maharashtra</option><option>Tamil Nadu</option>
-            <option>Andhra Pradesh</option><option>Telangana</option><option>Delhi</option>
+            <option>Maharashtra</option><option>Karnataka</option><option>Tamil Nadu</option>
+            <option>Delhi</option><option>Andhra Pradesh</option><option>Telangana</option>
             <option>West Bengal</option><option>Gujarat</option><option>Rajasthan</option>
           </select>
         </div>
         <button class="checkout-btn" onclick="placeOrder()">Place Order — ₹${total.toLocaleString()}</button>
+        <p style="text-align:center;font-size:0.68rem;color:var(--mist);margin-top:10px;">🔒 Secured by Razorpay · UPI accepted</p>
       </div>
     </div>
   </div>`;
 }
 
-function changeQty(id, size, delta) {
-  const c = getCart(); const item = c.find(x=>x.id===id&&x.size===size);
-  if (!item) return;
-  item.qty = Math.max(1, item.qty+delta);
-  saveCart(c);
-  renderCartPage();
+function chQty(id, v, delta) {
+  const c=getCart(), item=c.find(x=>x.id===id&&x.variant===v);
+  if (item) { item.qty=Math.max(1,item.qty+delta); saveCart(c); }
+  buildCart();
 }
-
-function doRemove(id, size) {
-  removeFromCart(id, size);
-  renderCartPage();
-}
-
+function doRemove(id, v) { removeFromCart(id,v); buildCart(); }
 function applyPromo() {
-  const val = document.getElementById('promoIn')?.value?.trim().toUpperCase();
-  if (val === 'VELA10') showToast('10% discount applied! ✓', 'success');
-  else showToast('Invalid promo code');
+  const v=(document.getElementById('promoIn')?.value||'').trim().toUpperCase();
+  if (v==='GLOW15') showToast('15% discount applied! ✓','success');
+  else showToast('Invalid promo code — try GLOW15');
 }
-
 function placeOrder() {
-  localStorage.removeItem('vela_cart');
+  localStorage.removeItem('lumiere_cart');
   updateBadge();
-  document.getElementById('cart-main').style.display = 'none';
-  document.getElementById('order-confirmed').style.display = 'block';
+  document.getElementById('cartMain').style.display='none';
+  document.getElementById('confirmed').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderFooter();
-  renderCartPage();
-});
+document.addEventListener('DOMContentLoaded', ()=>{ renderFooter(); buildCart(); });
 </script>
 </body>
 </html>
