@@ -1,1 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumière Beauty — Luxury Beauty & Skincare</title>
+<link rel="stylesheet" href="style.css">
+<style>
 
+/* ══ HERO ══ */
+.hero {
+  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--noir);
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 64px 80px; position: relative;
+}
+.hero-left::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1000&q=80') center/cover;
+  opacity: 0.28;
+}
+.hero-left-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(26,18,24,0.97) 0%, rgba(26,18,24,0.4) 100%);
+}
+.hero-left-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--rose);
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  animation: hUp 0.8s 0.1s both;
+}
+.hero-eyebrow::before { content:''; width: 28px; height: 1px; background: var(--rose); }
+.hero h1 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 400; line-height: 1.05;
+  color: var(--ivory); margin-bottom: 24px;
+  animation: hUp 0.8s 0.25s both;
+}
+.hero h1 em { font-style: italic; color: var(--rose); }
+.hero-desc {
+  font-size: 0.94rem; line-height: 1.85; color: rgba(253,248,245,0.55);
+  max-width: 400px; margin-bottom: 44px;
+  animation: hUp 0.8s 0.4s both;
+}
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: hUp 0.8s 0.55s both;
+}
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top;
+  animation: hRight 1.2s 0.1s both;
+}
+.hero-right-badge {
+  position: absolute; bottom: 48px; left: -1px;
+  background: var(--rose); color: #fff;
+  padding: 16px 28px;
+  animation: hUp 0.8s 0.7s both;
+}
+.hero-right-badge p { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.75; }
+.hero-right-badge h4 { font-family: 'Bodoni Moda', serif; font-size: 1.2rem; font-weight: 400; }
+
+@keyframes hUp  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes hRight { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
+
+/* ══ CATEGORY STRIP ══ */
+.cat-strip { background: var(--warm-white); padding: 64px 56px; }
+.cat-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+.cat-card {
+  text-align: center; cursor: pointer; padding: 32px 16px 24px;
+  border: 1.5px solid transparent; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.cat-card:hover { border-color: var(--rose); background: var(--blush); }
+.cat-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  margin: 0 auto 16px; overflow: hidden; background: var(--rose-pale);
+  transition: transform 0.4s;
+}
+.cat-icon img { width: 100%; height: 100%; object-fit: cover; }
+.cat-card:hover .cat-icon { transform: scale(1.08); }
+.cat-card h4 { font-family: 'Bodoni Moda', serif; font-size: 1rem; font-weight: 400; margin-bottom: 4px; }
+.cat-card p { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); }
+.cat-card .arrow {
+  display: inline-block; font-size: 0.65rem; color: var(--rose);
+  letter-spacing: 0.1em; margin-top: 10px; opacity: 0; transition: opacity 0.2s;
+}
+.cat-card:hover .arrow { opacity: 1; }
+
+/* ══ BEST SELLERS ══ */
+.best { background: var(--ivory); }
+.best-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 36px 24px; }
+
+/* ══ SPLIT PROMO ══ */
+.split { display: grid; grid-template-columns: 1fr 1fr; }
+.split-dark {
+  background: var(--deep); padding: 80px 56px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.split-dark .eyebrow { color: var(--rose); }
+.split-dark h2 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem); color: var(--ivory);
+  font-weight: 400; margin-bottom: 16px; line-height: 1.15;
+}
+.split-dark p { color: rgba(253,248,245,0.5); margin-bottom: 32px; line-height: 1.8; font-size: 0.9rem; }
+.split-img { position: relative; overflow: hidden; min-height: 480px; }
+.split-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.split-img-tag {
+  position: absolute; top: 28px; right: 28px;
+  background: rgba(253,248,245,0.92); padding: 14px 20px; text-align: right;
+}
+.split-img-tag p { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); }
+.split-img-tag span { font-family: 'Bodoni Moda', serif; font-size: 1.4rem; color: var(--rose); }
+
+/* ══ NEW ARRIVALS ══ */
+.new-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 36px 24px; }
+.new-arrivals { background: var(--blush); }
+
+/* ══ RITUAL STEPS ══ */
+.ritual { background: var(--noir); padding: 96px 56px; }
+.ritual h2 { color: var(--ivory); }
+.ritual .eyebrow { color: var(--rose); }
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 36px; margin-top: 0; }
+.step { text-align: center; }
+.step-num {
+  font-family: 'Bodoni Moda', serif; font-size: 3.5rem;
+  font-weight: 400; color: rgba(181,67,106,0.25); line-height: 1; margin-bottom: 16px;
+  transition: color 0.3s;
+}
+.step:hover .step-num { color: var(--rose); }
+.step h4 { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; font-weight: 400; color: var(--ivory); margin-bottom: 10px; }
+.step p { font-size: 0.82rem; line-height: 1.8; color: rgba(253,248,245,0.45); }
+
+/* ══ REVIEWS STRIP ══ */
+.reviews { background: var(--warm-white); padding: 72px 56px; }
+.rev-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+.rev-card {
+  background: var(--ivory); padding: 32px 28px;
+  border: 1px solid var(--rose-pale); position: relative;
+}
+.rev-card::before { content: '"'; font-family: 'Bodoni Moda', serif; font-size: 5rem; color: var(--rose-pale); position: absolute; top: 10px; left: 24px; line-height: 1; }
+.rev-text { font-size: 0.88rem; line-height: 1.8; color: var(--stone); margin-bottom: 20px; padding-top: 28px; }
+.rev-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.rev-product { font-size: 0.7rem; color: var(--mist); margin-top: 2px; }
+
+/* ══ INGREDIENTS BANNER ══ */
+.ingr-banner {
+  background: var(--rose); color: #fff; padding: 80px 56px;
+  display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr; gap: 40px; align-items: center;
+}
+.ingr-item { text-align: center; }
+.ingr-item h3 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 8px; }
+.ingr-item p { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.75; }
+.ingr-div { background: rgba(255,255,255,0.3); height: 100%; min-height: 60px; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 1024px) {
+  .cat-grid { grid-template-columns: repeat(3,1fr); }
+  .best-grid, .new-grid { grid-template-columns: repeat(2,1fr); }
+  .steps { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 80px 28px 60px; min-height: 70vh; }
+  .hero-right { height: 380px; }
+  .hero-right-badge { display: none; }
+  .split { grid-template-columns: 1fr; }
+  .split-img { min-height: 300px; }
+  .rev-grid { grid-template-columns: 1fr; }
+  .ingr-banner { grid-template-columns: 1fr; gap: 24px; }
+  .ingr-div { display: none; }
+  .cat-strip { padding: 48px 28px; }
+}
+@media (max-width: 640px) {
+  .hero-left { padding: 80px 20px 52px; }
+  .cat-grid { grid-template-columns: repeat(2,1fr); }
+  .best-grid, .new-grid { grid-template-columns: repeat(2,1fr); gap: 20px 12px; }
+  .steps { grid-template-columns: 1fr; }
+  .ingr-banner { padding: 56px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="page-body">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-left-overlay"></div>
+      <div class="hero-left-content">
+        <p class="hero-eyebrow">Spring / Summer 2026</p>
+        <h1>Beauty That<br>Goes <em>Deeper</em></h1>
+        <p class="hero-desc">Science-backed formulas. Clean ingredients. Uncompromising results. Welcome to the new standard of luxury beauty.</p>
+        <div class="hero-btns">
+          <a class="btn btn-rose" href="shop.html">Shop Now</a>
+          <a class="btn btn-outline-w" href="about.html">Our Philosophy</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80" alt="Lumière Beauty">
+      <div class="hero-right-badge">
+        <p>No. 1 Bestseller</p>
+        <h4>Velvet Glow Serum</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Free Shipping Over ₹1,499</span>
+      <span>Cruelty-Free · 100% Vegan</span>
+      <span>New: Rose Noir Parfum</span>
+      <span>Use code GLOW15 for 15% off</span>
+      <span>Clean Ingredients. Real Results.</span>
+      <span>Free Shipping Over ₹1,499</span>
+      <span>Cruelty-Free · 100% Vegan</span>
+      <span>New: Rose Noir Parfum</span>
+      <span>Use code GLOW15 for 15% off</span>
+      <span>Clean Ingredients. Real Results.</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="cat-strip">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="eyebrow">Shop By Category</span>
+      <h2 class="section-title" style="margin-bottom:0">Find Your <em>Ritual</em></h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="location.href='shop.html?cat=skincare'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80" alt="Skincare"></div>
+        <h4>Skincare</h4>
+        <p>6 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=makeup'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1631214503316-3bdd5d04c27b?w=200&q=80" alt="Makeup"></div>
+        <h4>Makeup</h4>
+        <p>4 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=hair'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=200&q=80" alt="Hair"></div>
+        <h4>Hair</h4>
+        <p>3 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=fragrance'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=200&q=80" alt="Fragrance"></div>
+        <h4>Fragrance</h4>
+        <p>3 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=body'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=200&q=80" alt="Body"></div>
+        <h4>Body</h4>
+        <p>2 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEST SELLERS -->
+  <section class="best section">
+    <span class="eyebrow">Most Loved</span>
+    <h2 class="section-title">Best <em>Sellers</em></h2>
+    <div class="best-grid" id="best-grid"></div>
+    <div style="text-align:center;margin-top:52px;">
+      <a class="btn btn-outline" href="shop.html">View All Products</a>
+    </div>
+  </section>
+
+  <!-- SPLIT PROMO -->
+  <div class="split">
+    <div class="split-dark">
+      <span class="eyebrow">The Edit</span>
+      <h2>Your Skin Deserves Better</h2>
+      <p>Our Velvet Glow Serum has over 300 five-star reviews for a reason. Hyaluronic Acid, Niacinamide & Vitamin C — in one weightless formula.</p>
+      <a class="btn btn-rose" href="product.html?id=1">Shop the Serum</a>
+    </div>
+    <div class="split-img">
+      <img src="https://images.unsplash.com/photo-1631390180393-7ef01abe78c8?w=800&q=80" alt="Serum">
+      <div class="split-img-tag">
+        <p>Star Rating</p>
+        <span>4.9 ★</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW ARRIVALS -->
+  <section class="new-arrivals section">
+    <span class="eyebrow">Just Arrived</span>
+    <h2 class="section-title">New <em>Arrivals</em></h2>
+    <div class="new-grid" id="new-grid"></div>
+  </section>
+
+  <!-- RITUAL STEPS -->
+  <section class="ritual">
+    <span class="eyebrow">How It Works</span>
+    <h2 class="section-title" style="color:var(--ivory);margin-bottom:56px;">Your Daily <em>Ritual</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Cleanse</h4>
+        <p>Start with a clean slate. Remove impurities gently without stripping your skin's natural moisture barrier.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Treat</h4>
+        <p>Apply targeted serums and treatments while skin is still damp to maximise absorption and efficacy.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Moisturise</h4>
+        <p>Lock in all the goodness with a barrier-strengthening moisturiser suited to your skin type.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Protect</h4>
+        <p>Always finish your morning routine with SPF. Sun protection is the most anti-ageing step of all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS BANNER -->
+  <div class="ingr-banner">
+    <div class="ingr-item">
+      <h3>100%</h3>
+      <p>Cruelty-Free & Vegan</p>
+    </div>
+    <div class="ingr-div"></div>
+    <div class="ingr-item">
+      <h3>0</h3>
+      <p>Harmful Chemicals</p>
+    </div>
+    <div class="ingr-div"></div>
+    <div class="ingr-item">
+      <h3>Clean</h3>
+      <p>Certified Ingredients</p>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <span class="eyebrow">Real Customers</span>
+    <h2 class="section-title" style="margin-bottom:40px;">What They're <em>Saying</em></h2>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p class="rev-text">The Velvet Glow Serum completely transformed my skin in just two weeks. My colleagues keep asking what I've had done — I just smile and say Lumière.</p>
+        <p class="rev-name">Priya S.</p>
+        <p class="rev-product">on Velvet Glow Serum</p>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p class="rev-text">I've tried every lip product under the sun. The Velvet Matte Lip Colour is genuinely the first one that stays put all day without drying my lips out. Worth every rupee.</p>
+        <p class="rev-name">Meera K.</p>
+        <p class="rev-product">on Velvet Matte Lip Colour</p>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p class="rev-text">Rose Noir is unlike any fragrance I own. It's dark and feminine and I get compliments every single time I wear it. A true signature scent — obsessed.</p>
+        <p class="rev-name">Aisha M.</p>
+        <p class="rev-product">on Rose Noir Eau de Parfum</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h2>Join the Lumière Circle</h2>
+    <p>Exclusive launches, expert tips, and members-only offers straight to you.</p>
+    <div class="nl-row">
+      <input class="nl-in" type="email" placeholder="Your email address">
+      <button class="nl-go" onclick="nlSubscribe(this)">Subscribe</button>
+    </div>
+  </div>
+
+</div>
+<script src="main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderFooter();
+
+  const bestProds = PRODUCTS.filter(p=>p.best).slice(0,4);
+  document.getElementById('best-grid').innerHTML = bestProds.map(cardHTML).join('');
+
+  const newProds = PRODUCTS.filter(p=>p.new).slice(0,4);
+  document.getElementById('new-grid').innerHTML = newProds.map(cardHTML).join('');
+});
+</script>
+</body>
+</html>
