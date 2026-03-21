@@ -1,300 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PPKKFMM7');</script>
-<!-- End Google Tag Manager -->
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VP5DLB4BY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6VP5DLB4BY');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELA — Luxury Clothing</title>
+<title>Lumière Beauty — Luxury Beauty & Skincare</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* ── HERO ── */
+
+/* ══ HERO ══ */
 .hero {
-  min-height: 100vh;
-  display: flex; align-items: flex-end;
-  padding: 0 56px 88px;
-  position: relative; overflow: hidden;
-  background: #1a120d;
+  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--noir);
 }
-.hero-bg {
-  position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1800&q=80') center 30%/cover no-repeat;
-  opacity: 0.32;
-}
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(15,14,13,0.88) 0%, rgba(15,14,13,0.1) 65%);
-}
-.hero-content { position: relative; z-index: 2; max-width: 680px; }
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold-light); margin-bottom: 22px;
-  animation: fadeUp 0.8s 0.1s both;
-}
-.hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold-light); }
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3.4rem, 7vw, 6.8rem); font-weight: 400; line-height: 1.04;
-  color: var(--parchment); margin-bottom: 28px;
-  animation: fadeUp 0.8s 0.25s both;
-}
-.hero h1 em { font-style: italic; color: var(--gold-light); }
-.hero-desc {
-  font-size: 1rem; line-height: 1.8; color: rgba(247,243,238,0.58);
-  max-width: 420px; margin-bottom: 44px;
-  animation: fadeUp 0.8s 0.4s both;
-}
-.hero-cta {
-  display: flex; gap: 16px; flex-wrap: wrap;
-  animation: fadeUp 0.8s 0.55s both;
-}
-.hero-scroll {
-  position: absolute; right: 56px; bottom: 88px; z-index: 2;
-  writing-mode: vertical-lr; font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(247,243,238,0.35); display: flex; align-items: center; gap: 12px;
-}
-.hero-scroll::after { content: ''; width: 1px; height: 48px; background: rgba(247,243,238,0.2); }
-
-@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-
-/* ── FEATURED STRIP ── */
-.feat-strip {
-  background: var(--linen);
-  padding: 56px;
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
-}
-.feat-item {
-  position: relative; overflow: hidden; aspect-ratio: 2/3; cursor: pointer;
-}
-.feat-item img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.6s ease; filter: brightness(0.75);
-}
-.feat-item:hover img { transform: scale(1.07); filter: brightness(0.55); }
-.feat-label {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 28px 24px;
-  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
-}
-.feat-label span {
-  display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px;
-}
-.feat-label h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem; font-weight: 400; color: #fff;
-}
-.feat-overlay-btn {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  opacity: 0; transition: opacity 0.3s;
-}
-.feat-item:hover .feat-overlay-btn { opacity: 1; }
-
-/* ── NEW ARRIVALS ── */
-.new-arrivals { background: var(--parchment); }
-.na-grid {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 32px 24px;
-}
-
-/* ── SPLIT BANNER ── */
-.split-banner {
-  display: grid; grid-template-columns: 1fr 1fr; min-height: 540px;
-}
-.split-left {
-  background: var(--ink); padding: 72px 56px;
+.hero-left {
   display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 64px 80px; position: relative;
 }
-.split-left .eyebrow { color: var(--gold-light); }
-.split-left h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 3.5vw, 3rem); color: var(--parchment);
+.hero-left::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1000&q=80') center/cover;
+  opacity: 0.28;
+}
+.hero-left-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(26,18,24,0.97) 0%, rgba(26,18,24,0.4) 100%);
+}
+.hero-left-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--rose);
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  animation: hUp 0.8s 0.1s both;
+}
+.hero-eyebrow::before { content:''; width: 28px; height: 1px; background: var(--rose); }
+.hero h1 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 400; line-height: 1.05;
+  color: var(--ivory); margin-bottom: 24px;
+  animation: hUp 0.8s 0.25s both;
+}
+.hero h1 em { font-style: italic; color: var(--rose); }
+.hero-desc {
+  font-size: 0.94rem; line-height: 1.85; color: rgba(253,248,245,0.55);
+  max-width: 400px; margin-bottom: 44px;
+  animation: hUp 0.8s 0.4s both;
+}
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: hUp 0.8s 0.55s both;
+}
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top;
+  animation: hRight 1.2s 0.1s both;
+}
+.hero-right-badge {
+  position: absolute; bottom: 48px; left: -1px;
+  background: var(--rose); color: #fff;
+  padding: 16px 28px;
+  animation: hUp 0.8s 0.7s both;
+}
+.hero-right-badge p { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.75; }
+.hero-right-badge h4 { font-family: 'Bodoni Moda', serif; font-size: 1.2rem; font-weight: 400; }
+
+@keyframes hUp  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes hRight { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
+
+/* ══ CATEGORY STRIP ══ */
+.cat-strip { background: var(--warm-white); padding: 64px 56px; }
+.cat-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+.cat-card {
+  text-align: center; cursor: pointer; padding: 32px 16px 24px;
+  border: 1.5px solid transparent; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.cat-card:hover { border-color: var(--rose); background: var(--blush); }
+.cat-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  margin: 0 auto 16px; overflow: hidden; background: var(--rose-pale);
+  transition: transform 0.4s;
+}
+.cat-icon img { width: 100%; height: 100%; object-fit: cover; }
+.cat-card:hover .cat-icon { transform: scale(1.08); }
+.cat-card h4 { font-family: 'Bodoni Moda', serif; font-size: 1rem; font-weight: 400; margin-bottom: 4px; }
+.cat-card p { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); }
+.cat-card .arrow {
+  display: inline-block; font-size: 0.65rem; color: var(--rose);
+  letter-spacing: 0.1em; margin-top: 10px; opacity: 0; transition: opacity 0.2s;
+}
+.cat-card:hover .arrow { opacity: 1; }
+
+/* ══ BEST SELLERS ══ */
+.best { background: var(--ivory); }
+.best-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 36px 24px; }
+
+/* ══ SPLIT PROMO ══ */
+.split { display: grid; grid-template-columns: 1fr 1fr; }
+.split-dark {
+  background: var(--deep); padding: 80px 56px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.split-dark .eyebrow { color: var(--rose); }
+.split-dark h2 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem); color: var(--ivory);
   font-weight: 400; margin-bottom: 16px; line-height: 1.15;
 }
-.split-left p { color: rgba(247,243,238,0.5); line-height: 1.8; margin-bottom: 32px; font-size: 0.9rem; }
-.split-right { position: relative; overflow: hidden; }
-.split-right img { width: 100%; height: 100%; object-fit: cover; }
+.split-dark p { color: rgba(253,248,245,0.5); margin-bottom: 32px; line-height: 1.8; font-size: 0.9rem; }
+.split-img { position: relative; overflow: hidden; min-height: 480px; }
+.split-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.split-img-tag {
+  position: absolute; top: 28px; right: 28px;
+  background: rgba(253,248,245,0.92); padding: 14px 20px; text-align: right;
+}
+.split-img-tag p { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); }
+.split-img-tag span { font-family: 'Bodoni Moda', serif; font-size: 1.4rem; color: var(--rose); }
 
-/* ── WHY US ── */
-.why-us { background: var(--white); }
-.why-grid {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 40px;
-}
-.why-item { text-align: center; padding: 32px 16px; }
-.why-icon {
-  font-size: 1.8rem; margin-bottom: 16px; display: block;
-}
-.why-item h4 {
-  font-family: 'Playfair Display', serif; font-size: 1.05rem;
-  font-weight: 400; margin-bottom: 8px;
-}
-.why-item p { font-size: 0.8rem; line-height: 1.75; color: var(--stone); }
+/* ══ NEW ARRIVALS ══ */
+.new-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 36px 24px; }
+.new-arrivals { background: var(--blush); }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 960px) {
-  .hero { padding: 0 28px 72px; }
-  .hero-scroll { display: none; }
-  .feat-strip { padding: 28px; grid-template-columns: 1fr 1fr; }
-  .feat-strip .feat-item:last-child { display: none; }
-  .na-grid { grid-template-columns: repeat(2,1fr); }
-  .why-grid { grid-template-columns: repeat(2,1fr); }
-  .split-banner { grid-template-columns: 1fr; }
-  .split-right { height: 340px; }
+/* ══ RITUAL STEPS ══ */
+.ritual { background: var(--noir); padding: 96px 56px; }
+.ritual h2 { color: var(--ivory); }
+.ritual .eyebrow { color: var(--rose); }
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 36px; margin-top: 0; }
+.step { text-align: center; }
+.step-num {
+  font-family: 'Bodoni Moda', serif; font-size: 3.5rem;
+  font-weight: 400; color: rgba(181,67,106,0.25); line-height: 1; margin-bottom: 16px;
+  transition: color 0.3s;
+}
+.step:hover .step-num { color: var(--rose); }
+.step h4 { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; font-weight: 400; color: var(--ivory); margin-bottom: 10px; }
+.step p { font-size: 0.82rem; line-height: 1.8; color: rgba(253,248,245,0.45); }
+
+/* ══ REVIEWS STRIP ══ */
+.reviews { background: var(--warm-white); padding: 72px 56px; }
+.rev-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+.rev-card {
+  background: var(--ivory); padding: 32px 28px;
+  border: 1px solid var(--rose-pale); position: relative;
+}
+.rev-card::before { content: '"'; font-family: 'Bodoni Moda', serif; font-size: 5rem; color: var(--rose-pale); position: absolute; top: 10px; left: 24px; line-height: 1; }
+.rev-text { font-size: 0.88rem; line-height: 1.8; color: var(--stone); margin-bottom: 20px; padding-top: 28px; }
+.rev-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.rev-product { font-size: 0.7rem; color: var(--mist); margin-top: 2px; }
+
+/* ══ INGREDIENTS BANNER ══ */
+.ingr-banner {
+  background: var(--rose); color: #fff; padding: 80px 56px;
+  display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr; gap: 40px; align-items: center;
+}
+.ingr-item { text-align: center; }
+.ingr-item h3 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 8px; }
+.ingr-item p { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.75; }
+.ingr-div { background: rgba(255,255,255,0.3); height: 100%; min-height: 60px; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 1024px) {
+  .cat-grid { grid-template-columns: repeat(3,1fr); }
+  .best-grid, .new-grid { grid-template-columns: repeat(2,1fr); }
+  .steps { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 80px 28px 60px; min-height: 70vh; }
+  .hero-right { height: 380px; }
+  .hero-right-badge { display: none; }
+  .split { grid-template-columns: 1fr; }
+  .split-img { min-height: 300px; }
+  .rev-grid { grid-template-columns: 1fr; }
+  .ingr-banner { grid-template-columns: 1fr; gap: 24px; }
+  .ingr-div { display: none; }
+  .cat-strip { padding: 48px 28px; }
 }
 @media (max-width: 640px) {
-  .hero { padding: 0 20px 60px; }
-  .feat-strip { padding: 20px; grid-template-columns: 1fr; }
-  .feat-strip .feat-item:last-child { display: block; }
-  .na-grid { grid-template-columns: repeat(2,1fr); gap: 16px; }
+  .hero-left { padding: 80px 20px 52px; }
+  .cat-grid { grid-template-columns: repeat(2,1fr); }
+  .best-grid, .new-grid { grid-template-columns: repeat(2,1fr); gap: 20px 12px; }
+  .steps { grid-template-columns: 1fr; }
+  .ingr-banner { padding: 56px 20px; }
 }
 </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPKKFMM7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="page-body">
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-tag">New Season — SS 2026</p>
-      <h1>Dressed in<br><em>Quiet Luxury</em></h1>
-      <p class="hero-desc">Timeless pieces crafted with intention. Wardrobe essentials built to last through every season of life.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="shop.html">Explore Collection</a>
-        <a class="btn btn-outline-white" href="about.html">Our Story</a>
+    <div class="hero-left">
+      <div class="hero-left-overlay"></div>
+      <div class="hero-left-content">
+        <p class="hero-eyebrow">Spring / Summer 2026</p>
+        <h1>Beauty That<br>Goes <em>Deeper</em></h1>
+        <p class="hero-desc">Science-backed formulas. Clean ingredients. Uncompromising results. Welcome to the new standard of luxury beauty.</p>
+        <div class="hero-btns">
+          <a class="btn btn-rose" href="shop.html">Shop Now</a>
+          <a class="btn btn-outline-w" href="about.html">Our Philosophy</a>
+        </div>
       </div>
     </div>
-    <div class="hero-scroll">Scroll</div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80" alt="Lumière Beauty">
+      <div class="hero-right-badge">
+        <p>No. 1 Bestseller</p>
+        <h4>Velvet Glow Serum</h4>
+      </div>
+    </div>
   </div>
 
   <!-- TICKER -->
   <div class="ticker">
-    <div class="ticker-inner">
-      <span>Free shipping over ₹3,999</span>
-      <span class="accent">◆</span>
-      <span>New Arrivals — Spring 2026</span>
-      <span class="accent">◆</span>
-      <span>Sustainably Made</span>
-      <span class="accent">◆</span>
-      <span>Easy 30-Day Returns</span>
-      <span class="accent">◆</span>
-      <span>Free shipping over ₹3,999</span>
-      <span class="accent">◆</span>
-      <span>New Arrivals — Spring 2026</span>
-      <span class="accent">◆</span>
-      <span>Sustainably Made</span>
-      <span class="accent">◆</span>
-      <span>Easy 30-Day Returns</span>
-      <span class="accent">◆</span>
+    <div class="ticker-track">
+      <span>Free Shipping Over ₹1,499</span>
+      <span>Cruelty-Free · 100% Vegan</span>
+      <span>New: Rose Noir Parfum</span>
+      <span>Use code GLOW15 for 15% off</span>
+      <span>Clean Ingredients. Real Results.</span>
+      <span>Free Shipping Over ₹1,499</span>
+      <span>Cruelty-Free · 100% Vegan</span>
+      <span>New: Rose Noir Parfum</span>
+      <span>Use code GLOW15 for 15% off</span>
+      <span>Clean Ingredients. Real Results.</span>
     </div>
   </div>
 
   <!-- CATEGORIES -->
-  <div class="feat-strip">
-    <div class="feat-item" onclick="location.href='shop.html?cat=women'">
-      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=80" alt="Women">
-      <div class="feat-label"><span>Womenswear</span><h3>Women</h3></div>
-      <button class="btn btn-outline-white feat-overlay-btn">Shop Now</button>
+  <div class="cat-strip">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="eyebrow">Shop By Category</span>
+      <h2 class="section-title" style="margin-bottom:0">Find Your <em>Ritual</em></h2>
     </div>
-    <div class="feat-item" onclick="location.href='shop.html?cat=men'">
-      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=700&q=80" alt="Men">
-      <div class="feat-label"><span>Menswear</span><h3>Men</h3></div>
-      <button class="btn btn-outline-white feat-overlay-btn">Shop Now</button>
-    </div>
-    <div class="feat-item" onclick="location.href='shop.html?cat=accessories'">
-      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=80" alt="Accessories">
-      <div class="feat-label"><span>Accessories</span><h3>Extras</h3></div>
-      <button class="btn btn-outline-white feat-overlay-btn">Shop Now</button>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="location.href='shop.html?cat=skincare'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80" alt="Skincare"></div>
+        <h4>Skincare</h4>
+        <p>6 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=makeup'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1631214503316-3bdd5d04c27b?w=200&q=80" alt="Makeup"></div>
+        <h4>Makeup</h4>
+        <p>4 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=hair'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=200&q=80" alt="Hair"></div>
+        <h4>Hair</h4>
+        <p>3 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=fragrance'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=200&q=80" alt="Fragrance"></div>
+        <h4>Fragrance</h4>
+        <p>3 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
+      <div class="cat-card" onclick="location.href='shop.html?cat=body'">
+        <div class="cat-icon"><img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=200&q=80" alt="Body"></div>
+        <h4>Body</h4>
+        <p>2 Products</p>
+        <span class="arrow">Shop →</span>
+      </div>
     </div>
   </div>
 
-  <!-- NEW ARRIVALS -->
-  <section class="new-arrivals section">
-    <span class="eyebrow">Just Landed</span>
-    <h2 class="section-title">New Arrivals</h2>
-    <div class="na-grid" id="new-grid"></div>
+  <!-- BEST SELLERS -->
+  <section class="best section">
+    <span class="eyebrow">Most Loved</span>
+    <h2 class="section-title">Best <em>Sellers</em></h2>
+    <div class="best-grid" id="best-grid"></div>
     <div style="text-align:center;margin-top:52px;">
       <a class="btn btn-outline" href="shop.html">View All Products</a>
     </div>
   </section>
 
-  <!-- SPLIT BANNER -->
-  <div class="split-banner">
-    <div class="split-left">
+  <!-- SPLIT PROMO -->
+  <div class="split">
+    <div class="split-dark">
       <span class="eyebrow">The Edit</span>
-      <h2>Pieces that work harder, not harder to find.</h2>
-      <p>We curate so you don't have to. Each season we add only what earns a permanent place in your wardrobe.</p>
-      <a class="btn btn-outline-white" href="shop.html?cat=sale">Shop the Sale</a>
+      <h2>Your Skin Deserves Better</h2>
+      <p>Our Velvet Glow Serum has over 300 five-star reviews for a reason. Hyaluronic Acid, Niacinamide & Vitamin C — in one weightless formula.</p>
+      <a class="btn btn-rose" href="product.html?id=1">Shop the Serum</a>
     </div>
-    <div class="split-right">
-      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80" alt="The Edit">
+    <div class="split-img">
+      <img src="https://images.unsplash.com/photo-1631390180393-7ef01abe78c8?w=800&q=80" alt="Serum">
+      <div class="split-img-tag">
+        <p>Star Rating</p>
+        <span>4.9 ★</span>
+      </div>
     </div>
   </div>
 
-  <!-- WHY US -->
-  <section class="why-us section-sm">
-    <div class="why-grid">
-      <div class="why-item">
-        <span class="why-icon">🚚</span>
-        <h4>Free Shipping</h4>
-        <p>Free standard shipping on all orders over ₹3,999 across India.</p>
+  <!-- NEW ARRIVALS -->
+  <section class="new-arrivals section">
+    <span class="eyebrow">Just Arrived</span>
+    <h2 class="section-title">New <em>Arrivals</em></h2>
+    <div class="new-grid" id="new-grid"></div>
+  </section>
+
+  <!-- RITUAL STEPS -->
+  <section class="ritual">
+    <span class="eyebrow">How It Works</span>
+    <h2 class="section-title" style="color:var(--ivory);margin-bottom:56px;">Your Daily <em>Ritual</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Cleanse</h4>
+        <p>Start with a clean slate. Remove impurities gently without stripping your skin's natural moisture barrier.</p>
       </div>
-      <div class="why-item">
-        <span class="why-icon">↩</span>
-        <h4>Easy Returns</h4>
-        <p>Changed your mind? Return within 30 days, no questions asked.</p>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Treat</h4>
+        <p>Apply targeted serums and treatments while skin is still damp to maximise absorption and efficacy.</p>
       </div>
-      <div class="why-item">
-        <span class="why-icon">🌿</span>
-        <h4>Sustainably Made</h4>
-        <p>Every material is traced. We work only with ethical, certified suppliers.</p>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Moisturise</h4>
+        <p>Lock in all the goodness with a barrier-strengthening moisturiser suited to your skin type.</p>
       </div>
-      <div class="why-item">
-        <span class="why-icon">✦</span>
-        <h4>Genuine Quality</h4>
-        <p>Each piece is inspected before it ships. We stand behind every stitch.</p>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Protect</h4>
+        <p>Always finish your morning routine with SPF. Sun protection is the most anti-ageing step of all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS BANNER -->
+  <div class="ingr-banner">
+    <div class="ingr-item">
+      <h3>100%</h3>
+      <p>Cruelty-Free & Vegan</p>
+    </div>
+    <div class="ingr-div"></div>
+    <div class="ingr-item">
+      <h3>0</h3>
+      <p>Harmful Chemicals</p>
+    </div>
+    <div class="ingr-div"></div>
+    <div class="ingr-item">
+      <h3>Clean</h3>
+      <p>Certified Ingredients</p>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <span class="eyebrow">Real Customers</span>
+    <h2 class="section-title" style="margin-bottom:40px;">What They're <em>Saying</em></h2>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p class="rev-text">The Velvet Glow Serum completely transformed my skin in just two weeks. My colleagues keep asking what I've had done — I just smile and say Lumière.</p>
+        <p class="rev-name">Priya S.</p>
+        <p class="rev-product">on Velvet Glow Serum</p>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p class="rev-text">I've tried every lip product under the sun. The Velvet Matte Lip Colour is genuinely the first one that stays put all day without drying my lips out. Worth every rupee.</p>
+        <p class="rev-name">Meera K.</p>
+        <p class="rev-product">on Velvet Matte Lip Colour</p>
+      </div>
+      <div class="rev-card">
+        <div class="stars">★★★★★</div>
+        <p class="rev-text">Rose Noir is unlike any fragrance I own. It's dark and feminine and I get compliments every single time I wear it. A true signature scent — obsessed.</p>
+        <p class="rev-name">Aisha M.</p>
+        <p class="rev-product">on Rose Noir Eau de Parfum</p>
       </div>
     </div>
   </section>
 
   <!-- NEWSLETTER -->
   <div class="newsletter">
-    <h2>Join the Inner Circle</h2>
-    <p>New arrivals, private sales, and journal entries — straight to your inbox.</p>
-    <div class="nl-form">
-      <input class="nl-input" type="email" placeholder="Your email address">
-      <button class="nl-btn" onclick="subscribeNewsletter(this)">Subscribe</button>
+    <h2>Join the Lumière Circle</h2>
+    <p>Exclusive launches, expert tips, and members-only offers straight to you.</p>
+    <div class="nl-row">
+      <input class="nl-in" type="email" placeholder="Your email address">
+      <button class="nl-go" onclick="nlSubscribe(this)">Subscribe</button>
     </div>
   </div>
 
 </div>
 <script src="main.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    renderFooter();
-    const newProds = PRODUCTS.filter(p => p.new).slice(0,4);
-    document.getElementById('new-grid').innerHTML = newProds.map(p => productCardHTML(p)).join('');
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  renderFooter();
+
+  const bestProds = PRODUCTS.filter(p=>p.best).slice(0,4);
+  document.getElementById('best-grid').innerHTML = bestProds.map(cardHTML).join('');
+
+  const newProds = PRODUCTS.filter(p=>p.new).slice(0,4);
+  document.getElementById('new-grid').innerHTML = newProds.map(cardHTML).join('');
+});
 </script>
 </body>
 </html>
