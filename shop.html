@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — Lumière Beauty</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.shop-banner {
+  background: var(--deep); padding: 56px 56px 48px;
+  margin-top: var(--nav-h);
+  display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;
+}
+.shop-banner h1 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(2.4rem,5vw,4.2rem); color: var(--ivory); font-weight: 400; line-height: 1.1;
+}
+.shop-banner h1 em { color: var(--rose); font-style: italic; }
+.count-tag {
+  font-size: 0.8rem; color: rgba(253,248,245,0.38);
+  margin-top: 8px; display: block;
+}
 
+.shop-body { padding: 48px 56px 96px; }
+.shop-controls {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-bottom: 40px; flex-wrap: wrap;
+}
+.right-ctrl { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 40px 24px;
+}
+.no-products {
+  grid-column: 1/-1; text-align: center; padding: 96px 0; color: var(--mist);
+}
+.no-products h3 {
+  font-family: 'Bodoni Moda', serif; font-size: 2rem; font-weight: 400; margin-bottom: 8px;
+}
+
+/* Price range */
+.price-filter {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.price-filter label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist); }
+.price-filter input[type=range] {
+  accent-color: var(--rose); width: 120px;
+}
+.price-val { font-size: 0.8rem; font-weight: 600; color: var(--rose); }
+
+@media (max-width: 1200px) { .p-grid { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 960px) {
+  .shop-banner { padding: 40px 28px 36px; }
+  .shop-body { padding: 36px 28px 72px; }
+  .p-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px) {
+  .shop-banner { padding: 32px 20px 28px; }
+  .shop-body { padding: 24px 20px 60px; }
+  .p-grid { gap: 24px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="page-body">
+
+  <div class="shop-banner">
+    <div>
+      <span class="eyebrow" style="color:var(--rose)">All Products</span>
+      <h1>The <em>Full</em> Edit</h1>
+      <span class="count-tag" id="countTag">Loading…</span>
+    </div>
+  </div>
+
+  <div class="shop-body">
+    <div class="shop-controls">
+      <div class="filters" id="filterBtns">
+        <button class="filt active" data-cat="all">All</button>
+        <button class="filt" data-cat="skincare">Skincare</button>
+        <button class="filt" data-cat="makeup">Makeup</button>
+        <button class="filt" data-cat="hair">Hair</button>
+        <button class="filt" data-cat="fragrance">Fragrance</button>
+        <button class="filt" data-cat="body">Body</button>
+        <button class="filt" data-cat="new">New In</button>
+        <button class="filt" data-cat="sale">Sale</button>
+        <button class="filt" data-cat="best">Bestsellers</button>
+      </div>
+      <div class="right-ctrl">
+        <div class="price-filter">
+          <label>Max ₹</label>
+          <input type="range" id="priceRange" min="500" max="6000" value="6000" step="100">
+          <span class="price-val" id="priceVal">₹6,000</span>
+        </div>
+        <select class="sort-s" id="sortSel">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low–High</option>
+          <option value="price-desc">Price: High–Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="reviews">Most Reviewed</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="p-grid" id="pGrid"></div>
+  </div>
+
+  <div class="newsletter">
+    <h2>Join the Lumière Circle</h2>
+    <p>Exclusive launches, expert tips, and members-only offers.</p>
+    <div class="nl-row">
+      <input class="nl-in" type="email" placeholder="Your email address">
+      <button class="nl-go" onclick="nlSubscribe(this)">Subscribe</button>
+    </div>
+  </div>
+
+</div>
+<script src="main.js"></script>
+<script>
+let activeCat = 'all';
+let activeSort = 'default';
+let maxPrice = 6000;
+
+function getFiltered() {
+  let p = [...PRODUCTS];
+  if (activeCat === 'new')  p = p.filter(x=>x.new);
+  else if (activeCat === 'sale') p = p.filter(x=>x.sale);
+  else if (activeCat === 'best') p = p.filter(x=>x.best);
+  else if (activeCat !== 'all')  p = p.filter(x=>x.cat === activeCat);
+  p = p.filter(x => x.price <= maxPrice);
+  if (activeSort === 'price-asc')  p.sort((a,b)=>a.price-b.price);
+  else if (activeSort === 'price-desc') p.sort((a,b)=>b.price-a.price);
+  else if (activeSort === 'rating')     p.sort((a,b)=>b.rating-a.rating);
+  else if (activeSort === 'reviews')    p.sort((a,b)=>b.reviews-a.reviews);
+  else if (activeSort === 'newest')     p.sort((a,b)=>(b.new?1:0)-(a.new?1:0));
+  return p;
+}
+
+function render() {
+  const prods = getFiltered();
+  const grid = document.getElementById('pGrid');
+  document.getElementById('countTag').textContent = `${prods.length} product${prods.length!==1?'s':''}`;
+  if (!prods.length) {
+    grid.innerHTML = `<div class="no-products"><h3>No products found</h3><p>Try adjusting your filters</p></div>`;
+    return;
+  }
+  grid.innerHTML = prods.map(cardHTML).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderFooter();
+
+  // URL param
+  const cat = new URLSearchParams(location.search).get('cat');
+  if (cat) {
+    activeCat = cat;
+    document.querySelectorAll('.filt').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  }
+
+  document.getElementById('filterBtns').addEventListener('click', e => {
+    const b = e.target.closest('.filt');
+    if (!b) return;
+    activeCat = b.dataset.cat;
+    document.querySelectorAll('.filt').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    render();
+  });
+
+  document.getElementById('sortSel').addEventListener('change', e => {
+    activeSort = e.target.value; render();
+  });
+
+  document.getElementById('priceRange').addEventListener('input', e => {
+    maxPrice = +e.target.value;
+    document.getElementById('priceVal').textContent = '₹' + maxPrice.toLocaleString();
+    render();
+  });
+
+  render();
+});
+</script>
+</body>
+</html>
